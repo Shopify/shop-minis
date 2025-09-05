@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "../_shared/": "../_shared/"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  },
+  "lock": false
+}
