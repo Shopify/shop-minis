@@ -1,0 +1,45 @@
+{
+  "name": "kitchen-sink",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A Shop Mini with WebView and Vite",
+  "main": "index.tsx",
+  "scripts": {
+    "start": "shop-minis dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@shopify/shop-minis-cli": "0.0.198",
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "6.3.1",
+    "@dnd-kit/modifiers": "9.0.0",
+    "@dnd-kit/sortable": "10.0.0",
+    "@emoji-mart/data": "1.2.1",
+    "@emoji-mart/react": "1.1.1",
+    "@react-three/fiber": "8.18.0",
+    "@shopify/shop-minis-react": "0.2.0",
+    "@tanstack/react-query": "5.86.0",
+    "embla-carousel-auto-scroll": "8.6.0",
+    "embla-carousel-autoplay": "8.6.0",
+    "embla-carousel-class-names": "8.6.0",
+    "embla-carousel-react": "8.6.0",
+    "emoji-mart": "5.6.0",
+    "lodash": "4.17.21",
+    "lucide-react": "0.513.0",
+    "radix-ui": "1.4.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router": "7.7.0",
+    "three": "0.178.0",
+    "ulid": "3.0.1",
+    "zustand": "5.0.8"
+  }
+}
