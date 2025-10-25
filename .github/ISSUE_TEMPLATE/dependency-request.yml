@@ -29,3 +29,11 @@ body:
       placeholder: "Describe the purpose and use case for this package"
     validations:
       required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: If you have considered other packages as alternatives to this one, please list them
+    validations:
+      required: false
