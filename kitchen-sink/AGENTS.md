@@ -189,7 +189,6 @@ import {
   useCurrentUser,
   useProductSearch,
   usePopularProducts,
-  useShopCartActions,
   useShopNavigation,
   useAsyncStorage,
   useSecureStorage,
@@ -200,6 +199,8 @@ import {
   MerchantCard,
   List,
   Image,
+  AddToCartButton,
+  BuyNowButton,
 
   // UI components
   Alert,

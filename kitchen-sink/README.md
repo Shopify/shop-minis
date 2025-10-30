@@ -34,7 +34,7 @@ npx shop-minis dev         # Start development server
 **Products & Commerce**
 - `useProductSearch` - Search products across Shop
 - `usePopularProducts` - Fetch trending products
-- `useShopCartActions` - Add to cart, manage cart items
+- `AddToCartButton` & `BuyNowButton` - Cart action buttons
 - `useShopNavigation` - Navigate to Shop app screens
 
 **Storage**
