@@ -31,7 +31,7 @@ export function SDKTestsPage() {
       category: "Products",
     },
     {
-      name: "useShopCartActions",
+      name: "Cart Action Buttons",
       path: "/sdk-tests/cart-actions",
       category: "Cart",
     },
