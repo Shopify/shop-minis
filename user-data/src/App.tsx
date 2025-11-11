@@ -48,7 +48,6 @@ export function App() {
                 <CategorySearch
                   key={category.id}
                   category={category.id}
-                  className="mb-4"
                   screenOffset="4"
                 />
               </div>

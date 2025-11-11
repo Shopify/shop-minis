@@ -1,8 +1,23 @@
 {
   "name": "Shop Minis SDK Hooks",
   "description": "A showcase of all the hooks available in the Shop Minis SDK",
-  "permissions": [],
+  "permissions": [
+    "CAMERA"
+  ],
   "privacy_policy_url": "https://shopify.com/legal/privacy",
   "terms_url": "https://shopify.com/legal/terms",
-  "handle": "shop-minis-sdk-hooks"
+  "handle": "shop-minis-sdk-hooks",
+  "scopes": [
+    "orders",
+    "product_list:read",
+    "product_list:write",
+    "products:recent:read",
+    "products:recommendations:read",
+    "profile",
+    "shops:follows:read",
+    "shops:follows:write",
+    "shops:recent:read",
+    "shops:recommendations:read",
+    "user_settings:read"
+  ]
 }

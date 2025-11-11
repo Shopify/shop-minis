@@ -1,18 +1,18 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
   ProductLink,
   useProductSearch,
   Button,
-} from '@shopify/shop-minis-react'
+} from "@shopify/shop-minis-react";
 
 export function ProductSearch() {
-  const [query, setQuery] = useState('shirt')
-  const [searchQuery, setSearchQuery] = useState('shirt')
-  const { products, loading, error } = useProductSearch({ query: searchQuery })
+  const [query, setQuery] = useState("shirt");
+  const [searchQuery, setSearchQuery] = useState("shirt");
+  const { products, loading, error } = useProductSearch({ query: searchQuery });
 
   const handleSearch = () => {
-    setSearchQuery(query)
-  }
+    setSearchQuery(query);
+  };
 
   return (
     <div className="space-y-4">
@@ -22,12 +22,12 @@ export function ProductSearch() {
         <input
           type="text"
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
           placeholder="Search products..."
           className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          onKeyPress={e => e.key === 'Enter' && handleSearch()}
+          onKeyPress={(e) => e.key === "Enter" && handleSearch()}
         />
-        <Button onClick={handleSearch} variant="primary">
+        <Button onClick={handleSearch} variant="default">
           Search
         </Button>
       </div>
@@ -67,5 +67,5 @@ export function ProductSearch() {
         </div>
       </details>
     </div>
-  )
+  );
 }

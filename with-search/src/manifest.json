@@ -3,5 +3,8 @@
   "features": [],
   "permissions": [],
   "privacy_policy_url": "https://example.com/privacy",
-  "terms_url": "https://example.com/terms"
+  "terms_url": "https://example.com/terms",
+  "scopes": [
+    "product_list:write"
+  ]
 }

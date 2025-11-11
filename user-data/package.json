@@ -2,15 +2,12 @@
   "name": "user-data",
   "private": true,
   "version": "0.0.1",
-  "description": "An example Shop Mini",
+  "description": "A Shop Mini with WebView and Vite",
   "main": "index.tsx",
   "scripts": {
-    "start": "shop-minis dev"
-  },
-  "dependencies": {
-    "@shopify/shop-minis-react": "latest",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "start": "shop-minis dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.8",
@@ -19,10 +16,11 @@
     "@vitejs/plugin-react": "^4.2.1",
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3",
-    "@shopify/shop-minis-cli": "latest-web"
+    "@shopify/shop-minis-cli": "0.0.206"
   },
-  "resolutions": {
-    "@apollo/federation": "0.38.1",
-    "graphql": "15.8.0"
+  "dependencies": {
+    "@shopify/shop-minis-react": "0.3.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }

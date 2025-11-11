@@ -2,38 +2,25 @@
   "name": "all-hooks",
   "private": true,
   "version": "0.0.1",
-  "type": "module",
-  "description": "An example Shop Mini",
+  "description": "A Shop Mini with WebView and Vite",
   "main": "index.tsx",
   "scripts": {
     "start": "shop-minis dev",
-    "lint": "eslint . --ext .ts,.tsx --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
-  },
-  "dependencies": {
-    "@shopify/shop-minis-react": "0.0.29",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@eslint/js": "^9.29.0",
-    "@shopify/shop-minis-cli": "0.0.174",
     "@tailwindcss/vite": "^4.1.8",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "@typescript-eslint/eslint-plugin": "^8.34.0",
-    "@typescript-eslint/parser": "^8.34.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^9.29.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-prettier": "^5.4.1",
-    "prettier": "^3.5.3",
     "tailwindcss": "^4.1.8",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "@shopify/shop-minis-cli": "0.0.206"
   },
-  "resolutions": {
-    "@apollo/federation": "0.38.1",
-    "graphql": "15.8.0"
+  "dependencies": {
+    "@shopify/shop-minis-react": "0.3.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }
