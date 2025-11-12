@@ -1,49 +1,49 @@
-import { useState } from 'react'
-import { useShare, Button } from '@shopify/shop-minis-react'
+import { useState } from "react";
+import { useShare, Button } from "@shopify/shop-minis-react";
 
 export function Share() {
-  const { share } = useShare()
-  const [status, setStatus] = useState<string>('')
+  const { share } = useShare();
+  const [status, setStatus] = useState<string>("");
 
   const handleShare = async () => {
     try {
-      setStatus('Sharing...')
+      setStatus("Sharing...");
       await share({
-        title: 'Check out this Shop Mini!',
-        message: 'I found this amazing Shop Mini that you might like.',
-        url: 'https://shop.app/example-mini',
-      })
-      setStatus('Shared successfully!')
+        title: "Check out this Shop Mini!",
+        message: "I found this amazing Shop Mini that you might like.",
+        url: "https://shop.app/example-mini",
+      });
+      setStatus("Shared successfully!");
     } catch {
-      setStatus('Share cancelled or failed')
+      setStatus("Share cancelled or failed");
     }
-  }
+  };
 
   const handleShareProduct = async () => {
     try {
-      setStatus('Sharing product...')
+      setStatus("Sharing product...");
       await share({
-        title: 'Amazing Product',
-        message: 'Check out this product I found!',
-        url: 'https://shop.app/products/example-product',
-      })
-      setStatus('Product shared successfully!')
+        title: "Amazing Product",
+        message: "Check out this product I found!",
+        url: "https://shop.app/products/example-product",
+      });
+      setStatus("Product shared successfully!");
     } catch {
-      setStatus('Share cancelled or failed')
+      setStatus("Share cancelled or failed");
     }
-  }
+  };
 
   const handleShareText = async () => {
     try {
-      setStatus('Sharing text...')
+      setStatus("Sharing text...");
       await share({
-        message: 'This is a text-only share from a Shop Mini! 🛍️',
-      })
-      setStatus('Text shared successfully!')
+        message: "This is a text-only share from a Shop Mini! 🛍️",
+      });
+      setStatus("Text shared successfully!");
     } catch {
-      setStatus('Share cancelled or failed')
+      setStatus("Share cancelled or failed");
     }
-  }
+  };
 
   return (
     <div>
@@ -58,7 +58,7 @@ export function Share() {
           </p>
         </div>
 
-        <Button onClick={handleShare} variant="primary">
+        <Button onClick={handleShare} variant="default">
           Share Mini Link
         </Button>
 
@@ -73,11 +73,11 @@ export function Share() {
         {status && (
           <div
             className={`p-3 rounded-lg text-sm ${
-              status.includes('successfully')
-                ? 'bg-green-50 text-green-800'
-                : status.includes('failed') || status.includes('cancelled')
-                  ? 'bg-red-50 text-red-800'
-                  : 'bg-gray-50 text-gray-800'
+              status.includes("successfully")
+                ? "bg-green-50 text-green-800"
+                : status.includes("failed") || status.includes("cancelled")
+                ? "bg-red-50 text-red-800"
+                : "bg-gray-50 text-gray-800"
             }`}
           >
             {status}
@@ -103,5 +103,5 @@ export function Share() {
         </div>
       </div>
     </div>
-  )
+  );
 }

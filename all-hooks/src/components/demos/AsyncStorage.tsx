@@ -1,94 +1,96 @@
 /* eslint-disable no-undef */
-import { useState } from 'react'
-import { Button, Input, useAsyncStorage } from '@shopify/shop-minis-react'
+import { useState } from "react";
+import { Button, Input, useAsyncStorage } from "@shopify/shop-minis-react";
 
 export function AsyncStorage() {
-  const [storageKey, setStorageKey] = useState('demo-key')
-  const [storageValue, setStorageValue] = useState('demo-value')
-  const { getItem, setItem, removeItem, getAllKeys, clear } = useAsyncStorage()
-  const [retrievedValue, setRetrievedValue] = useState<string | null>(null)
-  const [allKeys, setAllKeys] = useState<string[]>([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [storageKey, setStorageKey] = useState("demo-key");
+  const [storageValue, setStorageValue] = useState("demo-value");
+  const { getItem, setItem, removeItem, getAllKeys, clear } = useAsyncStorage();
+  const [retrievedValue, setRetrievedValue] = useState<string | null>(null);
+  const [allKeys, setAllKeys] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleStore = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
-      await setItem({ key: storageKey, value: storageValue })
-      console.log('Stored successfully')
+      await setItem({ key: storageKey, value: storageValue });
+      console.log("Stored successfully");
     } catch (error) {
-      console.error('Error storing data:', error)
-      setError(error instanceof Error ? error.message : 'Failed to store data')
+      console.error("Error storing data:", error);
+      setError(error instanceof Error ? error.message : "Failed to store data");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleRetrieve = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
-      const value = await getItem({ key: storageKey })
-      setRetrievedValue(value)
+      const value = await getItem({ key: storageKey });
+      setRetrievedValue(value);
     } catch (error) {
-      console.error('Error retrieving data:', error)
+      console.error("Error retrieving data:", error);
       setError(
-        error instanceof Error ? error.message : 'Failed to retrieve data'
-      )
+        error instanceof Error ? error.message : "Failed to retrieve data"
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleRemove = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
-      await removeItem({ key: storageKey })
-      setRetrievedValue(null)
-      console.log('Removed successfully')
+      await removeItem({ key: storageKey });
+      setRetrievedValue(null);
+      console.log("Removed successfully");
     } catch (error) {
-      console.error('Error removing data:', error)
-      setError(error instanceof Error ? error.message : 'Failed to remove data')
+      console.error("Error removing data:", error);
+      setError(
+        error instanceof Error ? error.message : "Failed to remove data"
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleGetAllKeys = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
-      const keys = await getAllKeys()
-      setAllKeys(keys)
+      const keys = await getAllKeys();
+      setAllKeys(keys);
     } catch (error) {
-      console.error('Error getting all keys:', error)
+      console.error("Error getting all keys:", error);
       setError(
-        error instanceof Error ? error.message : 'Failed to get all keys'
-      )
+        error instanceof Error ? error.message : "Failed to get all keys"
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleClear = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
-      await clear()
-      setRetrievedValue(null)
-      setAllKeys([])
-      console.log('Cleared all storage')
+      await clear();
+      setRetrievedValue(null);
+      setAllKeys([]);
+      console.log("Cleared all storage");
     } catch (error) {
-      console.error('Error clearing storage:', error)
+      console.error("Error clearing storage:", error);
       setError(
-        error instanceof Error ? error.message : 'Failed to clear storage'
-      )
+        error instanceof Error ? error.message : "Failed to clear storage"
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="space-y-4">
@@ -98,12 +100,12 @@ export function AsyncStorage() {
         <Input
           placeholder="Storage key"
           value={storageKey}
-          onChange={e => setStorageKey(e.target.value)}
+          onChange={(e) => setStorageKey(e.target.value)}
         />
         <Input
           placeholder="Value to store"
           value={storageValue}
-          onChange={e => setStorageValue(e.target.value)}
+          onChange={(e) => setStorageValue(e.target.value)}
         />
         <div className="flex gap-2 flex-wrap">
           <Button
@@ -118,18 +120,18 @@ export function AsyncStorage() {
           <Button
             onClick={handleRemove}
             disabled={loading || !storageKey}
-            variant="outlined"
+            variant="outline"
           >
             Remove
           </Button>
           <Button
             onClick={handleGetAllKeys}
             disabled={loading}
-            variant="outlined"
+            variant="outline"
           >
             Get All Keys
           </Button>
-          <Button onClick={handleClear} disabled={loading} variant="outlined">
+          <Button onClick={handleClear} disabled={loading} variant="outline">
             Clear All
           </Button>
         </div>
@@ -174,5 +176,5 @@ export function AsyncStorage() {
         </div>
       </details>
     </div>
-  )
+  );
 }

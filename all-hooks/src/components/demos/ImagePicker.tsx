@@ -1,45 +1,45 @@
-import { useState } from 'react'
-import { useImagePicker, Button } from '@shopify/shop-minis-react'
+import { useState } from "react";
+import { useImagePicker, Button } from "@shopify/shop-minis-react";
 
 /* global window */
 
 export function ImagePicker() {
-  const { openCamera, openGallery } = useImagePicker()
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
-  const [status, setStatus] = useState<string>('')
-  const [error, setError] = useState<string | null>(null)
+  const { openCamera, openGallery } = useImagePicker();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [status, setStatus] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
 
   const handleCameraCapture = async () => {
     try {
-      setError(null)
-      setStatus('Opening camera...')
-      const file = await openCamera()
-      const url = window.URL.createObjectURL(file)
-      setSelectedImage(url)
+      setError(null);
+      setStatus("Opening camera...");
+      const file = await openCamera();
+      const url = window.URL.createObjectURL(file);
+      setSelectedImage(url);
       setStatus(
         `Captured image: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`
-      )
+      );
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to capture image')
-      setStatus('')
+      setError(err instanceof Error ? err.message : "Failed to capture image");
+      setStatus("");
     }
-  }
+  };
 
   const handleGallerySelect = async () => {
     try {
-      setError(null)
-      setStatus('Opening gallery...')
-      const file = await openGallery()
-      const url = window.URL.createObjectURL(file)
-      setSelectedImage(url)
+      setError(null);
+      setStatus("Opening gallery...");
+      const file = await openGallery();
+      const url = window.URL.createObjectURL(file);
+      setSelectedImage(url);
       setStatus(
         `Selected image: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`
-      )
+      );
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to select image')
-      setStatus('')
+      setError(err instanceof Error ? err.message : "Failed to select image");
+      setStatus("");
     }
-  }
+  };
 
   return (
     <div>
@@ -54,7 +54,7 @@ export function ImagePicker() {
         </div>
 
         <div className="flex gap-2">
-          <Button onClick={handleCameraCapture} variant="primary">
+          <Button onClick={handleCameraCapture} variant="default">
             📸 Open Camera
           </Button>
 
@@ -87,10 +87,10 @@ export function ImagePicker() {
             </div>
             <Button
               onClick={() => {
-                setSelectedImage(null)
-                setStatus('')
+                setSelectedImage(null);
+                setStatus("");
               }}
-              variant="outlined"
+              variant="outline"
             >
               Clear Image
             </Button>
@@ -116,5 +116,5 @@ export function ImagePicker() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,69 +1,69 @@
-import React, { useState } from 'react'
-import { Button, useSecureStorage } from '@shopify/shop-minis-react'
+import { useState } from "react";
+import { Button, useSecureStorage } from "@shopify/shop-minis-react";
 
 // Fallback Textarea component since it's not exported from @shopify/shop-minis-react
-const Textarea = ({ className = '', ...props }: any) => (
+const Textarea = ({ className = "", ...props }: any) => (
   <textarea
     className={`border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${className}`}
     {...props}
   />
-)
+);
 
 interface SecureStorageProps {
-  secureValue: string
-  setSecureValue: (value: string) => void
+  secureValue: string;
+  setSecureValue: (value: string) => void;
 }
 
 export function SecureStorage({
   secureValue,
   setSecureValue,
 }: SecureStorageProps) {
-  const storage = useSecureStorage()
-  const [retrievedValue, setRetrievedValue] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
+  const storage = useSecureStorage();
+  const [retrievedValue, setRetrievedValue] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleStore = async () => {
     if ((storage as any).store) {
-      setLoading(true)
+      setLoading(true);
       try {
-        await (storage as any).store(secureValue)
-        console.log('Stored securely')
+        await (storage as any).store(secureValue);
+        console.log("Stored securely");
       } catch (error) {
-        console.error('Error storing secure data:', error)
+        console.error("Error storing secure data:", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-  }
+  };
 
   const handleRetrieve = async () => {
     if ((storage as any).retrieve) {
-      setLoading(true)
+      setLoading(true);
       try {
-        const value = await (storage as any).retrieve()
-        setRetrievedValue(value)
+        const value = await (storage as any).retrieve();
+        setRetrievedValue(value);
       } catch (error) {
-        console.error('Error retrieving secure data:', error)
+        console.error("Error retrieving secure data:", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-  }
+  };
 
   const handleRemove = async () => {
     if ((storage as any).remove) {
-      setLoading(true)
+      setLoading(true);
       try {
-        await (storage as any).remove()
-        setRetrievedValue(null)
-        console.log('Removed securely')
+        await (storage as any).remove();
+        setRetrievedValue(null);
+        console.log("Removed securely");
       } catch (error) {
-        console.error('Error removing secure data:', error)
+        console.error("Error removing secure data:", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-  }
+  };
 
   return (
     <div className="space-y-4">
@@ -93,7 +93,7 @@ export function SecureStorage({
           <Button
             onClick={handleRemove}
             disabled={loading || !(storage as any).remove}
-            variant="outlined"
+            variant="outline"
           >
             Remove
           </Button>
@@ -116,5 +116,5 @@ export function SecureStorage({
         </div>
       </details>
     </div>
-  )
+  );
 }

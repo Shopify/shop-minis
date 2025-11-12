@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  useOrders,
-  type Order,
-  type Money,
-} from '@shopify/shop-minis-react'
+import { useOrders, type Order, type Money } from '@shopify/shop-minis-react'
 
 function formatPrice(money: Money): string {
   const numPrice = parseFloat(money.amount)
@@ -117,8 +113,7 @@ export function Orders() {
               )
             }, 0)
             const currency =
-              order.lineItems[0]?.product?.price?.currencyCode ||
-              'USD'
+              order.lineItems[0]?.product?.price?.currencyCode || 'USD'
 
             return (
               <div
