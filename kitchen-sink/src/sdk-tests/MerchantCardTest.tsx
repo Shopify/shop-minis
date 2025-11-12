@@ -6,6 +6,7 @@ import {
   Card,
   Badge,
   Alert,
+  AlertDescription,
   Button,
   Skeleton,
   Touchable,
@@ -60,14 +61,16 @@ export function MerchantCardTest() {
         {selectedMerchant && (
           <div className="p-4">
             <Alert>
-              Selected: {selectedMerchant.name}
-              {selectedMerchant.reviewAnalytics?.averageRating && (
-                <span>
-                  {" "}
-                  - Rating: {selectedMerchant.reviewAnalytics.averageRating} (
-                  {selectedMerchant.reviewAnalytics.reviewCount || 0} reviews)
-                </span>
-              )}
+              <AlertDescription>
+                Selected: {selectedMerchant.name}
+                {selectedMerchant.reviewAnalytics?.averageRating && (
+                  <span>
+                    {" "}
+                    - Rating: {selectedMerchant.reviewAnalytics.averageRating} (
+                    {selectedMerchant.reviewAnalytics.reviewCount || 0} reviews)
+                  </span>
+                )}
+              </AlertDescription>
             </Alert>
           </div>
         )}

@@ -11,6 +11,7 @@ import {
   DragOverlay,
   DragOverEvent,
   closestCorners,
+  useDroppable,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -140,6 +141,29 @@ function KanbanItem({ item }: { item: Item }) {
   );
 }
 
+function DroppableColumn({
+  columnId,
+  children,
+}: {
+  columnId: string;
+  children: React.ReactNode;
+}) {
+  const { setNodeRef, isOver } = useDroppable({
+    id: columnId,
+  });
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={`bg-gray-100 rounded-lg p-3 transition-colors ${
+        isOver ? "bg-gray-200" : ""
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function DragDropLibraries() {
   const navigate = useNavigateWithTransition();
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -161,15 +185,15 @@ export function DragDropLibraries() {
 
   const [kanbanColumns, setKanbanColumns] = useState<Record<string, Item[]>>({
     todo: [
-      { id: "k1", content: "Design mockups", color: "bg-gray-500" },
-      { id: "k2", content: "Write documentation", color: "bg-gray-500" },
+      { id: "k1", content: "Task 1", color: "bg-gray-500" },
+      { id: "k2", content: "Task 2", color: "bg-gray-500" },
     ],
-    inProgress: [
-      { id: "k3", content: "Implement feature", color: "bg-blue-500" },
+    Active: [
+      { id: "k3", content: "Task 3", color: "bg-blue-500" },
     ],
     done: [
-      { id: "k4", content: "Code review", color: "bg-green-500" },
-      { id: "k5", content: "Testing", color: "bg-green-500" },
+      { id: "k4", content: "Task 4", color: "bg-green-500" },
+      { id: "k5", content: "Task 5", color: "bg-green-500" },
     ],
   });
 
@@ -229,14 +253,12 @@ export function DragDropLibraries() {
     );
 
     // Determine the target column
-    let overColumn = Object.keys(kanbanColumns).find((col) =>
-      kanbanColumns[col].some((item) => item.id === overId)
-    );
-
-    // If over is a column itself (not an item)
-    if (Object.keys(kanbanColumns).includes(overId)) {
-      overColumn = overId;
-    }
+    // First check if overId is a column name (when dropping on empty column or column container)
+    let overColumn = Object.keys(kanbanColumns).includes(overId)
+      ? overId
+      : Object.keys(kanbanColumns).find((col) =>
+          kanbanColumns[col].some((item) => item.id === overId)
+        );
 
     if (activeColumn && overColumn && activeColumn !== overColumn) {
       setKanbanColumns((prev) => {
@@ -254,7 +276,17 @@ export function DragDropLibraries() {
         );
 
         // Add to new column
-        newColumns[overColumn] = [...newColumns[overColumn], itemToMove];
+        // If we're hovering over an item, add after it; otherwise add to end
+        const overItemIndex = newColumns[overColumn].findIndex(
+          (item) => item.id === overId
+        );
+        if (overItemIndex >= 0) {
+          // Insert after the item we're hovering over
+          newColumns[overColumn].splice(overItemIndex + 1, 0, itemToMove);
+        } else {
+          // Add to end of column (when dropping on empty column)
+          newColumns[overColumn] = [...newColumns[overColumn], itemToMove];
+        }
 
         return newColumns;
       });
@@ -277,27 +309,37 @@ export function DragDropLibraries() {
 
     if (!activeColumn) return;
 
+    // Determine the target column
+    const overColumn = Object.keys(kanbanColumns).includes(overId)
+      ? overId
+      : Object.keys(kanbanColumns).find((col) =>
+          kanbanColumns[col].some((item) => item.id === overId)
+        );
+
     // If dropping on an item in the same column, reorder
-    const overItem = kanbanColumns[activeColumn].find(
-      (item) => item.id === overId
-    );
-    if (overItem) {
-      setKanbanColumns((prev) => {
-        const newColumns = { ...prev };
-        const oldIndex = newColumns[activeColumn].findIndex(
-          (item) => item.id === activeId
-        );
-        const newIndex = newColumns[activeColumn].findIndex(
-          (item) => item.id === overId
-        );
-        newColumns[activeColumn] = arrayMove(
-          newColumns[activeColumn],
-          oldIndex,
-          newIndex
-        );
-        return newColumns;
-      });
+    if (overColumn === activeColumn && !Object.keys(kanbanColumns).includes(overId)) {
+      const overItem = kanbanColumns[activeColumn].find(
+        (item) => item.id === overId
+      );
+      if (overItem) {
+        setKanbanColumns((prev) => {
+          const newColumns = { ...prev };
+          const oldIndex = newColumns[activeColumn].findIndex(
+            (item) => item.id === activeId
+          );
+          const newIndex = newColumns[activeColumn].findIndex(
+            (item) => item.id === overId
+          );
+          newColumns[activeColumn] = arrayMove(
+            newColumns[activeColumn],
+            oldIndex,
+            newIndex
+          );
+          return newColumns;
+        });
+      }
     }
+    // Note: Cross-column drops are already handled by handleKanbanDragOver
   };
 
   // Get all kanban items for finding active item
@@ -308,7 +350,7 @@ export function DragDropLibraries() {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="flex items-center px-4 py-3">
-                    <Touchable
+          <Touchable
             onClick={() => navigate(-1)}
             className="flex items-center justify-center w-10 h-10 -ml-2 rounded-lg"
             style={{ minHeight: "48px", minWidth: "48px" }}
@@ -325,7 +367,7 @@ export function DragDropLibraries() {
       <div className="flex-1 overflow-auto p-4 space-y-4">
         {/* Vertical List */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Sortable List</h3>
+          <h3 className="font-semibold text-gray-900">Sortable List</h3>
 
           <DndContext
             sensors={sensors}
@@ -356,7 +398,7 @@ export function DragDropLibraries() {
 
         {/* Horizontal List */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">
+          <h3 className="font-semibold text-gray-900">
             Horizontal Sortable
           </h3>
 
@@ -391,8 +433,8 @@ export function DragDropLibraries() {
 
         {/* Kanban Board Example */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Kanban Board</h3>
-          <p className="text-sm text-gray-600 mb-4">
+          <h3 className="font-semibold text-gray-900">Kanban Board</h3>
+          <p className="text-sm text-gray-600">
             Drag items between columns or reorder within columns
           </p>
 
@@ -405,12 +447,11 @@ export function DragDropLibraries() {
           >
             <div className="grid grid-cols-3 gap-3">
               {Object.entries(kanbanColumns).map(([columnId, items]) => (
-                <SortableContext
-                  key={columnId}
-                  items={items.map((i) => i.id)}
-                  strategy={verticalListSortingStrategy}
-                >
-                  <div className="bg-gray-100 rounded-lg p-3">
+                <DroppableColumn key={columnId} columnId={columnId}>
+                  <SortableContext
+                    items={items.map((i) => i.id)}
+                    strategy={verticalListSortingStrategy}
+                  >
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="font-medium text-sm capitalize">
                         {columnId.replace(/([A-Z])/g, " $1")}
@@ -427,8 +468,8 @@ export function DragDropLibraries() {
                         </div>
                       )}
                     </div>
-                  </div>
-                </SortableContext>
+                  </SortableContext>
+                </DroppableColumn>
               ))}
             </div>
             <DragOverlay>
@@ -447,7 +488,7 @@ export function DragDropLibraries() {
 
         {/* Features */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">DnD Kit Features</h3>
+          <h3 className="font-semibold text-gray-900">DnD Kit Features</h3>
           <ul className="space-y-2 text-sm text-gray-600">
             <li className="flex items-start gap-2">
               <span className="text-green-600">✓</span>
