@@ -1,27 +1,37 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Button,
   useNavigateWithTransition,
   Card,
   Alert,
   Touchable,
+  AlertTitle,
 } from "@shopify/shop-minis-react";
 
 export function ButtonVariantsTest() {
   const navigate = useNavigateWithTransition();
   const [lastPressed, setLastPressed] = useState<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handlePress = (buttonType: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
     setLastPressed(buttonType);
-    setTimeout(() => setLastPressed(null), 2000);
-  };
+
+    timeoutRef.current = setTimeout(() => {
+      setLastPressed(null);
+      timeoutRef.current = null;
+    }, 2000)
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="flex items-center px-4 py-3">
-                    <Touchable
+          <Touchable
             onClick={() => navigate(-1)}
             className="flex items-center justify-center w-10 h-10 -ml-2 rounded-lg"
             style={{ minHeight: "48px", minWidth: "48px" }}
@@ -41,11 +51,11 @@ export function ButtonVariantsTest() {
 
       <div className="flex-1 p-4 space-y-4 overflow-auto">
         {/* Feedback Alert */}
-        {lastPressed && <Alert>Pressed: {lastPressed}</Alert>}
+        {lastPressed && <Alert><AlertTitle className="text-center">Pressed: {lastPressed}</AlertTitle></Alert>}
 
         {/* Button Variants */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Variants</h3>
+          <h3 className="font-semibold text-gray-900">Variants</h3>
           <div className="space-y-3">
             <Button
               variant="default"
@@ -107,7 +117,7 @@ export function ButtonVariantsTest() {
 
         {/* Button Sizes */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Sizes</h3>
+          <h3 className="font-semibold text-gray-900">Sizes</h3>
           <div className="space-y-3">
             <Button
               size="sm"
@@ -137,7 +147,7 @@ export function ButtonVariantsTest() {
 
         {/* Button States */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">States</h3>
+          <h3 className="font-semibold text-gray-900">States</h3>
           <div className="space-y-3">
             <Button
               onClick={() => handlePress("Enabled Button")}
@@ -158,7 +168,7 @@ export function ButtonVariantsTest() {
 
         {/* Icon Buttons */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">With Icons</h3>
+          <h3 className="font-semibold text-gray-900">With Icons</h3>
           <div className="space-y-3">
             <Button
               variant="default"
@@ -183,6 +193,16 @@ export function ButtonVariantsTest() {
             </Button>
 
             <Button
+              variant="secondary"
+              onClick={() => handlePress("Button with Left Icon")}
+              className="w-full"
+            >
+              <span className="flex items-center justify-center gap-2">
+                <span>❤️</span>
+              </span>
+            </Button>
+
+            <Button
               variant="icon"
               size="lg"
               onClick={() => handlePress("Icon Only Button")}
@@ -194,7 +214,7 @@ export function ButtonVariantsTest() {
 
         {/* Usage Example */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+          <h3 className="font-semibold text-gray-900">Usage Example</h3>
           <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
             {`import { Button } from '@shopify/shop-minis-react'
 

@@ -6,7 +6,7 @@ export { ImagePickerTest } from "./ImagePickerTest";
 export { SearchComponentTest } from "./SearchComponentTest";
 export { ButtonVariantsTest } from "./ButtonVariantsTest";
 export { ShopNavigationTest } from "./ShopNavigationTest";
-export { UIComponentsTest } from "./UIComponentsTest";
+export { InputLabelTest } from "./InputLabelTest";
 export { ShopCartActionsTest } from "./ShopCartActionsTest";
 export { SecureStorageTest } from "./SecureStorageTest";
 export { GenerateUserTokenTest } from "./GenerateUserTokenTest";

@@ -58,7 +58,7 @@ export function SkeletonTest() {
         <div className="p-4 space-y-4">
           {/* Text Skeletons */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-4">Text Content</h3>
+            <h3 className="font-semibold text-gray-900">Text Content</h3>
 
             {loading ? (
               <div className="space-y-3">
@@ -98,7 +98,7 @@ export function SkeletonTest() {
 
           {/* Product Card Skeleton */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-4">Product Cards</h3>
+            <h3 className="font-semibold text-gray-900">Product Cards</h3>
 
             <div className="grid grid-cols-2 gap-3">
               {loading ? (
@@ -165,7 +165,7 @@ export function SkeletonTest() {
 
           {/* User Profile Skeleton */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-4">User Profile</h3>
+            <h3 className="font-semibold text-gray-900">User Profile</h3>
 
             {loading ? (
               <div className="flex items-start gap-4">
@@ -205,7 +205,7 @@ export function SkeletonTest() {
 
           {/* List Items Skeleton */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-4">List Items</h3>
+            <h3 className="font-semibold text-gray-900">List Items</h3>
 
             <div className="space-y-3">
               {loading ? (
@@ -270,7 +270,7 @@ export function SkeletonTest() {
 
           {/* Custom Shapes */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-4">Custom Shapes</h3>
+            <h3 className="font-semibold text-gray-900">Custom Shapes</h3>
 
             {loading ? (
               <div className="space-y-4">
@@ -341,7 +341,7 @@ export function SkeletonTest() {
 
           {/* Animation Example */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-4">
+            <h3 className="font-semibold text-gray-900">
               Pulse Animation
             </h3>
             <p className="text-sm text-gray-600 mb-3">
@@ -358,7 +358,7 @@ export function SkeletonTest() {
 
           {/* Usage Example */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+            <h3 className="font-semibold text-gray-900">Usage Example</h3>
             <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
               {`import { Skeleton } from '@shopify/shop-minis-react'
 
