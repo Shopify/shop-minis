@@ -17,20 +17,26 @@ export function MerchantCardTest() {
   const [layoutMode, setLayoutMode] = useState<"single" | "double">("single");
   const [selectedMerchant, setSelectedMerchant] = useState<any>(null);
 
-  console.log(
-    "Shops",
-    shops?.map((shop) => shop.logoImage?.url)
-  );
-
   const handleMerchantPress = (merchant: any) => {
     setSelectedMerchant(merchant);
     setTimeout(() => setSelectedMerchant(null), 3000);
   };
 
+  const transformedShops = shops?.map((shop) => ({
+    ...shop,
+    visualTheme: {
+      id: shop.visualTheme?.id || `vt-${shop.id}`,
+      logoImage: shop.logoImage ? { ...shop.logoImage, sensitive: shop.logoImage.sensitive ?? false } : null,
+      featuredImages: shop.visualTheme?.featuredImages || [],
+      description: shop.visualTheme?.description,
+      brandSettings: shop.visualTheme?.brandSettings,
+    },
+  }));
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-20">
         <div className="flex items-center px-4 py-3">
                     <Touchable
             onClick={() => navigate(-1)}
@@ -89,8 +95,8 @@ export function MerchantCardTest() {
 
           {/* Data Source Info */}
           <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-600">Recent Shops</span>
-            {shops && <Badge variant="primary">{shops.length} shops</Badge>}
+            <span className="text-gray-600">Recent Shops (with logo images)</span>
+            {transformedShops && <Badge variant="primary">{transformedShops.length} shops</Badge>}
           </div>
 
           {/* Error Message */}
@@ -124,7 +130,7 @@ export function MerchantCardTest() {
         )}
 
         {/* Merchant Cards */}
-        {!loading && shops && shops.length > 0 && (
+        {!loading && transformedShops && transformedShops.length > 0 && (
           <div className="p-4">
             <h3 className="font-semibold text-gray-900 mb-4">Recent Shops</h3>
 
@@ -133,7 +139,7 @@ export function MerchantCardTest() {
                 layoutMode === "single" ? "space-y-4" : "grid grid-cols-2 gap-3"
               }`}
             >
-              {shops.map((shop) => (
+              {transformedShops.map((shop) => (
                 <div key={shop.id} onClick={() => handleMerchantPress(shop)}>
                   <MerchantCard shop={shop} />
                 </div>
@@ -158,7 +164,7 @@ export function MerchantCardTest() {
         {/* Info Cards */}
         <div className="p-4 space-y-4">
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-gray-900">
               MerchantCard Features
             </h3>
             <div className="space-y-2 text-sm text-gray-600">
@@ -172,7 +178,7 @@ export function MerchantCardTest() {
           </Card>
 
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Layout Options</h3>
+            <h3 className="font-semibold text-gray-900">Layout Options</h3>
             <div className="space-y-2 text-sm text-gray-600">
               <p>✓ Single column layout for detailed view</p>
               <p>✓ Two column grid for compact display</p>
@@ -182,7 +188,7 @@ export function MerchantCardTest() {
           </Card>
 
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Integration</h3>
+            <h3 className="font-semibold text-gray-900">Integration</h3>
             <div className="space-y-2 text-sm text-gray-600">
               <p>The MerchantCard component automatically handles:</p>
               <ul className="ml-4 space-y-1">
@@ -196,7 +202,7 @@ export function MerchantCardTest() {
           </Card>
 
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+            <h3 className="font-semibold text-gray-900">Usage Example</h3>
             <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
               {`import { MerchantCard, useRecentShops } from '@shopify/shop-minis-react'
 

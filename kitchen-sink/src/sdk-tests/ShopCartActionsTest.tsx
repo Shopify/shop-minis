@@ -136,7 +136,7 @@ export function ShopCartActionsTest() {
                 checkout.
               </p>
               <div className="space-y-3">
-                {products.slice(3, 6).map((product: any) => {
+                {products.slice(0, 3).map((product: any) => {
                   const variantId = product.defaultVariantId;
                   return (
                     <div

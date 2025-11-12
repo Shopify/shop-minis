@@ -36,7 +36,7 @@ export function SearchComponentTest() {
         {/* Search Bar Section */}
         <div className="bg-white p-4 border-b">
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-4">
+            <h3 className="font-semibold text-gray-900 -mb-16">
               Search Products
             </h3>
             <Search
@@ -95,7 +95,7 @@ export function SearchComponentTest() {
           {/* No Results */}
           {products && products.length === 0 && searchQuery && (
             <Card className="p-6 text-center">
-              <p className="text-gray-500 mb-2">No results found</p>
+              <p className="text-gray-500">No results found</p>
               <p className="text-sm text-gray-400">
                 Try searching for something else
               </p>
@@ -104,7 +104,7 @@ export function SearchComponentTest() {
 
           {/* Component Features */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-gray-900">
               Component Features
             </h3>
             <div className="space-y-2">
@@ -141,7 +141,7 @@ export function SearchComponentTest() {
 
           {/* Usage Example */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+            <h3 className="font-semibold text-gray-900">Usage Example</h3>
             <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
               {`import { Search } from '@shopify/shop-minis-react'
 

@@ -6,6 +6,7 @@ import {
   Card,
   Badge,
   Alert,
+  AlertTitle,
   Button,
   Skeleton,
   Touchable,
@@ -87,7 +88,9 @@ export function ProductCardTest() {
           {/* Error Message */}
           {error && (
             <Alert variant="destructive" className="mt-2">
-              Error loading products: {error.message}
+              <div className="w-80">
+                Error loading products: {error.message}
+              </div>
             </Alert>
           )}
         </div>
@@ -120,7 +123,7 @@ export function ProductCardTest() {
           products.length > 0 &&
           layoutMode === "grid" && (
             <div className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-4">
+              <h3 className="font-semibold text-gray-900 mb-3">
                 Grid Layout (2 columns)
               </h3>
               <div className="grid grid-cols-2 gap-3">
@@ -142,7 +145,7 @@ export function ProductCardTest() {
           products.length > 0 &&
           layoutMode === "list" && (
             <div className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-4">
+              <h3 className="font-semibold text-gray-900 mb-3">
                 List Layout (Single column)
               </h3>
               <div className="space-y-3">
@@ -174,7 +177,7 @@ export function ProductCardTest() {
         {/* Product States Demo */}
         <div className="p-4 space-y-4">
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Product States</h3>
+            <h3 className="font-semibold text-gray-900">Product States</h3>
             <div className="space-y-2 text-sm text-gray-600">
               <p>• The SDK ProductCard handles all product states</p>
               <p>• Displays pricing, variants, and availability</p>
@@ -185,7 +188,7 @@ export function ProductCardTest() {
           </Card>
 
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Features</h3>
+            <h3 className="font-semibold text-gray-900">Features</h3>
             <div className="space-y-2 text-sm text-gray-600">
               <p>✓ Responsive grid and list layouts</p>
               <p>✓ Lazy loading with skeleton states</p>
@@ -196,7 +199,7 @@ export function ProductCardTest() {
           </Card>
 
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Notes</h3>
+            <h3 className="font-semibold text-gray-900">Usage Notes</h3>
             <div className="space-y-2 text-sm text-gray-600">
               <p>
                 The ProductCard component from @shopify/shop-minis-react

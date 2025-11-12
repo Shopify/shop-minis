@@ -24,7 +24,7 @@ export function AlertBadgeTest() {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="flex items-center px-4 py-3">
-                    <Touchable
+          <Touchable
             onClick={() => navigate(-1)}
             className="flex items-center justify-center w-10 h-10 -ml-2 rounded-lg"
             style={{ minHeight: "48px", minWidth: "48px" }}
@@ -43,14 +43,16 @@ export function AlertBadgeTest() {
       <div className="flex-1 p-4 space-y-4 overflow-auto">
         {/* Alerts Section */}
         <Card className="p-4">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Alerts</h2>
+          <h2 className="text-lg font-semibold text-gray-900">Alerts</h2>
 
           <div className="space-y-3">
             {/* Default Alert */}
             <div>
               <p className="text-sm text-gray-600 mb-2">Default Alert</p>
               <Alert>
-                This is a default alert message with important information.
+                <div className="w-90">
+                  This is a default alert message with important information.
+                </div>
               </Alert>
             </div>
 
@@ -58,7 +60,9 @@ export function AlertBadgeTest() {
             <div>
               <p className="text-sm text-gray-600 mb-2">Destructive Alert</p>
               <Alert variant="destructive">
-                Error: Something went wrong. Please try again.
+                <div className="w-90">
+                  Error: Something went wrong. Please try again.
+                </div>
               </Alert>
             </div>
 
@@ -66,7 +70,7 @@ export function AlertBadgeTest() {
             <div>
               <p className="text-sm text-gray-600 mb-2">Custom Styled Alert</p>
               <Alert className="bg-blue-50 border-blue-200 text-blue-900">
-                <div className="flex items-start gap-2">
+                <div className="flex items-start gap-2 w-75">
                   <span>ℹ️</span>
                   <div>
                     <p className="font-medium">Information</p>
@@ -85,7 +89,7 @@ export function AlertBadgeTest() {
               {showDismissible ? (
                 <Alert className="flex items-center justify-between">
                   <span>You can dismiss this alert</span>
-                            <Touchable
+                  <Touchable
                     onClick={() => setShowDismissible(false)}
                     className="text-sm font-medium underline"
                   >
@@ -109,8 +113,10 @@ export function AlertBadgeTest() {
                 Auto-dismiss Alert (3s)
               </p>
               {showTimedAlert && (
-                <Alert className="bg-green-50 border-green-200 text-green-900">
-                  ✅ Success! This alert will disappear in 3 seconds.
+                <Alert className="bg-green-50 border-green-200 text-green-900 mb-2">
+                  <div className="w-80">
+                    ✅ Success! This alert will disappear in 3 seconds.
+                  </div>
                 </Alert>
               )}
               <Button
@@ -127,7 +133,7 @@ export function AlertBadgeTest() {
 
         {/* Badges Section */}
         <Card className="p-4">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Badges</h2>
+          <h2 className="text-lg font-semibold text-gray-900">Badges</h2>
 
           {/* Badge Variants */}
           <div className="mb-4">
@@ -144,10 +150,11 @@ export function AlertBadgeTest() {
             </div>
           </div>
 
-          {/* Badge with Numbers */}
+          {/* Notification Badges */}
           <div className="mb-4">
-            <p className="text-sm text-gray-600 mb-2">Notification Badges</p>
-            <div className="flex items-center gap-4">
+            <p className="text-sm text-gray-600 mb-3">Notification Badges</p>
+            
+            <div className="flex gap-4 justify-center mb-2">
               <div className="relative">
                 <Button variant="secondary">Messages</Button>
                 <Badge
@@ -167,15 +174,15 @@ export function AlertBadgeTest() {
                   {alertCount || "0"}
                 </Badge>
               </div>
-
+            </div>
+            <div className="w-full flex gap-4 mt-2 justify-center">
               <Button
                 onClick={() => setAlertCount(alertCount + 1)}
                 variant="outline"
                 size="sm"
               >
-                Add Notification
+                + Add
               </Button>
-
               <Button
                 onClick={() => setAlertCount(0)}
                 variant="outline"
@@ -202,7 +209,7 @@ export function AlertBadgeTest() {
                 </Badge>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
                 <span className="text-sm">Product:</span>
                 <Badge variant="destructive">Sale</Badge>
                 <Badge variant="secondary">Out of Stock</Badge>
@@ -251,13 +258,13 @@ export function AlertBadgeTest() {
 
         {/* Combined Example */}
         <Card className="p-4">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-gray-900">
             Real-world Examples
           </h2>
 
           {/* Product Card with Badges */}
-          <div className="mb-4 p-4 border border-gray-200 rounded-lg">
-            <div className="flex items-start justify-between mb-2">
+          <div className="p-4 border border-gray-200 rounded-lg">
+            <div className="flex items-start justify-between w-77 mb-2">
               <div>
                 <h3 className="font-medium text-gray-900">
                   Premium Headphones
@@ -272,7 +279,7 @@ export function AlertBadgeTest() {
               </div>
             </div>
             <Alert className="mt-3 bg-yellow-50 border-yellow-200 text-yellow-900">
-              <span className="text-sm">
+              <span className="text-sm w-90">
                 ⚡ Only 3 left in stock - order soon!
               </span>
             </Alert>
@@ -281,21 +288,21 @@ export function AlertBadgeTest() {
           {/* Notification List */}
           <div className="space-y-2">
             <Alert>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between w-60">
                 <span>Your order has been shipped</span>
                 <Badge variant="primary">New</Badge>
               </div>
             </Alert>
 
             <Alert className="bg-green-50 border-green-200 text-green-900">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between w-55">
                 <span>Payment successful</span>
                 <Badge className="bg-green-100 text-green-800">Completed</Badge>
               </div>
             </Alert>
 
             <Alert variant="destructive">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between w-46">
                 <span>Item is out of stock</span>
                 <Badge variant="destructive">Alert</Badge>
               </div>
@@ -305,7 +312,7 @@ export function AlertBadgeTest() {
 
         {/* Usage Example */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+          <h3 className="font-semibold text-gray-900">Usage Example</h3>
           <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
             {`import { Alert, Badge } from '@shopify/shop-minis-react'
 

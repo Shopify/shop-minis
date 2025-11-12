@@ -132,7 +132,7 @@ export function VideoPlayerTest() {
 
         {/* Player Controls */}
         <div className="p-4 bg-white border-b space-y-3">
-          <h3 className="font-semibold text-gray-900 mb-3">Player Settings</h3>
+          <h3 className="font-semibold text-gray-900">Player Settings</h3>
 
           {/* Autoplay, Muted, Loop */}
           <div className="flex gap-2">
@@ -144,7 +144,10 @@ export function VideoPlayerTest() {
               {autoplay ? "✓ Autoplay" : "Autoplay"}
             </Button>
             <Button
-              onClick={() => setMuted(!muted)}
+              onClick={() => {
+                const newMutedState = !muted;
+                setMuted(newMutedState);
+              }}
               variant={muted ? "default" : "secondary"}
               size="sm"
             >
@@ -153,12 +156,12 @@ export function VideoPlayerTest() {
           </div>
 
           {/* Custom URL */}
-          <div className="flex gap-2">
+          <div className="gap-2">
             <Input
               value={customUrl}
               onChange={(e) => setCustomUrl(e.target.value)}
               placeholder="Enter custom video URL..."
-              className="flex-1"
+              className="flex-1 mb-2"
             />
             <Button onClick={handlePlayCustomUrl} variant="default">
               Play URL
@@ -211,7 +214,7 @@ export function VideoPlayerTest() {
         {/* Features & Info */}
         <div className="p-4 space-y-4">
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-gray-900">
               VideoPlayer Features
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">
@@ -251,7 +254,7 @@ export function VideoPlayerTest() {
           </Card>
 
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+            <h3 className="font-semibold text-gray-900">Usage Example</h3>
             <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
               {`import { VideoPlayer } from '@shopify/shop-minis-react'
 
@@ -287,7 +290,7 @@ function ProductVideo({ product }) {
           </Card>
 
           <Alert className="bg-blue-50 border-blue-200">
-            <div className="flex items-start gap-2 w-full">
+            <div className="flex items-start gap-2 w-85">
               <span className="text-blue-600">ℹ️</span>
               <div>
                 <p className="font-medium text-blue-900">Video Requirements</p>
