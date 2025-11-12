@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import * as LucideIcons from "lucide-react";
-import { Tabs, Dialog, Switch, Accordion, Checkbox, RadioGroup, Slider, Tooltip, Progress, Separator, DropdownMenu, Popover } from "radix-ui";
+import { Tabs, Dialog, Switch, Accordion, Checkbox, RadioGroup, Slider, Progress, Separator} from "radix-ui";
 import {
   useNavigateWithTransition,
   Card,
@@ -21,8 +21,6 @@ export function AnimationUILibraries() {
   const [radioValue, setRadioValue] = useState("option1");
   const [sliderValue, setSliderValue] = useState([50]);
   const [progressValue, setProgressValue] = useState(33);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [popoverOpen, setPopoverOpen] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">

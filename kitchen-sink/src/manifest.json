@@ -11,11 +11,5 @@
     "user_settings:read",
     "product_list:write"
   ],
-  "privacy_policy_url": "https://example.com/privacy",
-  "terms_url": "https://example.com/terms",
-  "handle": "kitchen-sink",
-  "trusted_domains": [
-    "placehold.co",
-    "commondatastorage.googleapis.com"
-  ]
+  "handle": "kitchen-sink"
 }

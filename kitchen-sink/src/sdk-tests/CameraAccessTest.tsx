@@ -27,7 +27,7 @@ export function CameraAccessTest() {
   // Open native camera using SDK
   const handleOpenCamera = async () => {
     try {
-      const result = await imagePicker.openCamera(cameraFacing);
+      const result = await imagePicker.openCamera({ cameraFacing });
       if (result) {
         const imageUrl = URL.createObjectURL(result);
         setCapturedImages((prev) => [imageUrl, ...prev]);

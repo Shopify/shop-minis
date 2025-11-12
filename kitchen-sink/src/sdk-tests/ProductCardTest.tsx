@@ -6,7 +6,6 @@ import {
   Card,
   Badge,
   Alert,
-  AlertTitle,
   Button,
   Skeleton,
   Touchable,

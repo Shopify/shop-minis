@@ -42,7 +42,7 @@ export function ImagePickerTest() {
 
     try {
       // openCamera accepts optional camera facing: 'front' | 'back'
-      const file = await imagePicker.openCamera("back");
+      const file = await imagePicker.openCamera({ cameraFacing: "back" });
       if (file) {
         const imageUrl = URL.createObjectURL(file);
         setSelectedImages((prev) => [...prev, imageUrl]);
