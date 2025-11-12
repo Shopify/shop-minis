@@ -1,0 +1,7 @@
+{
+  "name": "navigation-with-deeplinks",
+  "permissions": [],
+  "scopes": [
+    "product_list:write"
+  ]
+}
