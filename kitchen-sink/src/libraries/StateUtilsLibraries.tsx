@@ -738,7 +738,7 @@ function StateUtilsContent() {
           <>
             {/* Array Methods */}
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-3">
+              <h3 className="font-semibold text-gray-900">
                 Array Methods
               </h3>
               <div className="space-y-3 text-sm">
@@ -791,7 +791,7 @@ function StateUtilsContent() {
 
             {/* Collection Methods */}
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-3">
+              <h3 className="font-semibold text-gray-900">
                 Collection Methods
               </h3>
               <div className="space-y-3 text-sm">
@@ -835,7 +835,7 @@ function StateUtilsContent() {
 
             {/* Object Methods */}
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-3">
+              <h3 className="font-semibold text-gray-900">
                 Object Methods
               </h3>
               <div className="space-y-3 text-sm">
@@ -870,7 +870,7 @@ function StateUtilsContent() {
 
             {/* String Methods */}
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-3">
+              <h3 className="font-semibold text-gray-900">
                 String Methods
               </h3>
               <div className="space-y-2 text-sm">
@@ -903,7 +903,7 @@ function StateUtilsContent() {
 
             {/* Function Methods */}
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-3">
+              <h3 className="font-semibold text-gray-900">
                 Function Methods
               </h3>
               <div className="space-y-4">
@@ -942,7 +942,7 @@ function StateUtilsContent() {
 
             {/* Lodash Features */}
             <Card className="p-4 bg-amber-50 border-amber-200">
-              <h3 className="font-semibold text-gray-900 mb-2">
+              <h3 className="font-semibold text-gray-900">
                 Lodash Benefits
               </h3>
               <ul className="space-y-1 text-sm text-gray-700">
@@ -972,7 +972,7 @@ function StateUtilsContent() {
           <>
             {/* ULID Generator */}
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-3">
+              <h3 className="font-semibold text-gray-900">
                 ULID Generator
               </h3>
               <div className="space-y-3">
@@ -991,7 +991,7 @@ function StateUtilsContent() {
                 {ulidList.length > 0 && (
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-gray-700 w-100">
                         Recent IDs ({ulidList.length})
                       </span>
                       <Button
@@ -1030,7 +1030,7 @@ function StateUtilsContent() {
 
             {/* ULID Anatomy */}
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-3">ULID Anatomy</h3>
+              <h3 className="font-semibold text-gray-900">ULID Anatomy</h3>
               <div className="space-y-3">
                 <div className="bg-blue-50 p-4 rounded-lg">
                   <div className="font-mono text-sm mb-2">
@@ -1060,7 +1060,7 @@ function StateUtilsContent() {
 
             {/* ULID Features */}
             <Card className="p-4 bg-purple-50 border-purple-200">
-              <h3 className="font-semibold text-gray-900 mb-2">
+              <h3 className="font-semibold text-gray-900">
                 ULID Features
               </h3>
               <ul className="space-y-1 text-sm text-gray-700">
@@ -1093,7 +1093,7 @@ function StateUtilsContent() {
 
             {/* Comparison */}
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-3">
+              <h3 className="font-semibold text-gray-900">
                 ULID vs UUID
               </h3>
               <div className="space-y-3 text-sm">
