@@ -9,6 +9,7 @@ import {
   Alert,
   Touchable,
   Label,
+  AlertTitle,
 } from "@shopify/shop-minis-react";
 
 export function AsyncStorageTest() {
@@ -104,7 +105,7 @@ export function AsyncStorageTest() {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="flex items-center px-4 py-3">
-                    <Touchable
+          <Touchable
             onClick={() => navigate(-1)}
             className="flex items-center justify-center w-10 h-10 -ml-2 rounded-lg"
             style={{ minHeight: "48px", minWidth: "48px" }}
@@ -125,15 +126,16 @@ export function AsyncStorageTest() {
         {message && (
           <Alert
             variant={message.type === "success" ? "default" : "destructive"}
-            className="mb-4"
           >
-            {message.text}
+            <AlertTitle className="text-center">
+              {message.text}
+            </AlertTitle>
           </Alert>
         )}
 
         {/* Storage Operations */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">
+          <h3 className="font-semibold text-gray-900">
             Storage Operations
           </h3>
 
@@ -175,7 +177,7 @@ export function AsyncStorageTest() {
 
         {/* Stored Data */}
         <Card className="p-4">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between">
             <h3 className="font-semibold text-gray-900">Stored Data</h3>
             <Badge variant="secondary">
               {Object.keys(storedData).length} items
@@ -195,7 +197,7 @@ export function AsyncStorageTest() {
                       {String(v)}
                     </p>
                   </div>
-                            <Touchable
+                  <Touchable
                     onClick={() => handleDelete(k)}
                     className="ml-2 p-2 text-red-600 hover:bg-red-50 rounded-lg"
                     style={{ minHeight: "48px", minWidth: "48px" }}
@@ -222,7 +224,7 @@ export function AsyncStorageTest() {
 
         {/* Usage Example */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+          <h3 className="font-semibold text-gray-900">Usage Example</h3>
           <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
             {`import { useAsyncStorage } from '@shopify/shop-minis-react'
 

@@ -100,11 +100,11 @@ export function GenerateUserTokenTest() {
       <div className="flex-1 p-4 space-y-4 overflow-auto">
         {/* Token Generation Info */}
         <Alert className="bg-blue-50 border-blue-200">
-          <div className="flex items-start gap-2">
-            <span className="text-blue-600">🔑</span>
+          <div className="w-80 flex gap-2">
+            <span>🔑</span>
             <div>
-              <p className="font-medium text-blue-900">Authentication Tokens</p>
-              <p className="text-sm text-blue-700 mt-1">
+              <p className="w-full font-medium text-blue-900">Authentication Tokens</p>
+              <p className="w-full text-sm text-blue-700 mt-1">
                 Generate secure JWT tokens to authenticate backend API calls on
                 behalf of the current Shop user.
               </p>
@@ -121,7 +121,7 @@ export function GenerateUserTokenTest() {
 
         {/* Token Generation */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Generate Token</h3>
+          <h3 className="font-semibold text-gray-900">Generate Token</h3>
 
           <div className="space-y-3">
             <p className="text-sm text-gray-600">
@@ -163,12 +163,12 @@ export function GenerateUserTokenTest() {
             {/* Custom Scopes */}
             <div className="space-y-2">
               <Label>Custom Scopes:</Label>
-              <div className="flex gap-2">
+              <div>
                 <Input
                   value={customScopes}
                   onChange={(e) => setCustomScopes(e.target.value)}
                   placeholder="scope1, scope2, scope3"
-                  className="flex-1"
+                  className="mb-2"
                 />
                 <Button
                   onClick={handleCustomScopes}
@@ -185,14 +185,14 @@ export function GenerateUserTokenTest() {
         {/* Generated Token */}
         {token && (
           <Card className="p-4">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between">
               <h3 className="font-semibold text-gray-900">Generated Token</h3>
               <Badge variant="primary">Active</Badge>
             </div>
 
             <div className="space-y-3">
               <div className="p-3 bg-gray-900 rounded-lg">
-                <p className="text-xs text-gray-400 mb-1">JWT Token:</p>
+                <p className="text-xs text-gray-400">JWT Token:</p>
                 <p className="text-xs text-green-400 font-mono break-all">
                   {token.substring(0, 50)}...
                   {token.substring(token.length - 20)}
@@ -230,16 +230,16 @@ export function GenerateUserTokenTest() {
 
         {/* Token Usage */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="font-semibold text-gray-900">
             How to Use Tokens
           </h3>
 
           <div className="space-y-3">
             <div className="p-3 bg-gray-50 rounded">
-              <p className="text-sm font-medium text-gray-900 mb-1">
+              <p className="text-sm font-medium text-gray-900">
                 1. Backend API Call
               </p>
-              <pre className="text-xs bg-gray-900 text-gray-100 p-2 rounded mt-2">
+              <pre className="text-xs bg-gray-900 text-gray-100 p-2 rounded mt-2 overflow-x-auto">
                 {`fetch('https://api.yourbackend.com/user', {
   headers: {
     'Authorization': 'Bearer ' + token
@@ -249,10 +249,10 @@ export function GenerateUserTokenTest() {
             </div>
 
             <div className="p-3 bg-gray-50 rounded">
-              <p className="text-sm font-medium text-gray-900 mb-1">
+              <p className="text-sm font-medium text-gray-900">
                 2. Verify Token (Backend)
               </p>
-              <pre className="text-xs bg-gray-900 text-gray-100 p-2 rounded mt-2">
+              <pre className="text-xs bg-gray-900 text-gray-100 p-2 rounded mt-2 overflow-x-auto">
                 {`// Verify with Shopify's public key
 const payload = jwt.verify(token, publicKey)
 const userId = payload.sub
@@ -261,19 +261,22 @@ const scopes = payload.scope`}
             </div>
 
             <div className="p-3 bg-gray-50 rounded">
-              <p className="text-sm font-medium text-gray-900 mb-1">
+              <p className="text-sm font-medium text-gray-900">
                 3. Token Refresh
               </p>
-              <p className="text-xs text-gray-600 mt-1">
-                Tokens expire after 1 hour. Generate a new token before expiry.
-              </p>
+              <pre className="text-xs bg-gray-900 text-gray-100 p-2 rounded mt-2 overflow-x-auto">
+                {`// Tokens expire after 1 hour
+const result = await generateUserToken()
+const token = result.data.token
+const expiresAt = result.data.expiresAt`}
+              </pre>
             </div>
           </div>
         </Card>
 
         {/* Security Notes */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="font-semibold text-gray-900">
             Security Best Practices
           </h3>
           <ul className="space-y-2 text-sm text-gray-600">
@@ -306,7 +309,7 @@ const scopes = payload.scope`}
 
         {/* Usage Example */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+          <h3 className="font-semibold text-gray-900">Usage Example</h3>
           <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
             {`import { useGenerateUserToken } from '@shopify/shop-minis-react'
 

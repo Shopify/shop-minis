@@ -5,6 +5,7 @@ import {
   Card,
   Button,
   Alert,
+  AlertTitle,
   Touchable,
 } from "@shopify/shop-minis-react";
 
@@ -69,7 +70,6 @@ const mockImages = [
 export function ImageComponentTest() {
   const navigate = useNavigateWithTransition();
   const [loadingMode, setLoadingMode] = useState<"lazy" | "eager">("lazy");
-  const [showPlaceholder, setShowPlaceholder] = useState(true);
   const [objectFit, setObjectFit] = useState<"cover" | "contain" | "fill">(
     "cover"
   );
@@ -102,10 +102,12 @@ export function ImageComponentTest() {
       <div className="flex-1 overflow-auto">
         {/* Selected Image Alert */}
         {selectedImage && (
-          <div className="p-4">
+          <div className="px-4 pb-4">
             <Alert>
-              Selected: {selectedImage.title} ({selectedImage.width}x
-              {selectedImage.height})
+              <AlertTitle className="text-center">
+                Selected: {selectedImage.title} ({selectedImage.width}x
+                {selectedImage.height})
+              </AlertTitle>
             </Alert>
           </div>
         )}
@@ -188,18 +190,6 @@ export function ImageComponentTest() {
               </Button>
             </div>
           </div>
-
-          {/* Placeholder Toggle */}
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600">Show Placeholder:</span>
-            <Button
-              onClick={() => setShowPlaceholder(!showPlaceholder)}
-              variant={showPlaceholder ? "default" : "secondary"}
-              size="sm"
-            >
-              {showPlaceholder ? "Enabled" : "Disabled"}
-            </Button>
-          </div>
         </div>
 
         {/* Image Grid */}
@@ -219,12 +209,13 @@ export function ImageComponentTest() {
                     width={image.width}
                     height={image.height}
                     loading={loadingMode}
+                    aspectRatio={1}
                     className="w-full h-full"
-                    style={{ objectFit }}
+                    objectFit={objectFit}
                     onLoad={() => console.log(`Loaded: ${image.title}`)}
                     onError={() => console.log(`Error loading: ${image.title}`)}
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2">
+                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent p-2">
                     <p className="text-white text-xs font-medium truncate">
                       {image.title}
                     </p>
@@ -241,7 +232,7 @@ export function ImageComponentTest() {
         {/* Different Aspect Ratios */}
         <div className="p-4 space-y-4">
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-gray-900">
               Aspect Ratio Examples
             </h3>
             <div className="space-y-3">
@@ -280,7 +271,7 @@ export function ImageComponentTest() {
               {/* 4:3 */}
               <div>
                 <p className="text-sm text-gray-600 mb-2">4:3 Aspect Ratio</p>
-                <div className="aspect-[4/3] bg-gray-100 rounded overflow-hidden max-w-xs">
+                <div className="aspect-4/3 bg-gray-100 rounded overflow-hidden max-w-xs">
                   <Image
                     src="https://placehold.co/800x600/F59E0B/ffffff?text=4:3"
                     alt="4:3 aspect ratio"
@@ -297,7 +288,7 @@ export function ImageComponentTest() {
 
           {/* Features */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-gray-900">
               Image Component Features
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">
@@ -334,7 +325,7 @@ export function ImageComponentTest() {
 
           {/* Usage Example */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+            <h3 className="font-semibold text-gray-900">Usage Example</h3>
             <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
               {`import { Image } from '@shopify/shop-minis-react'
 

@@ -9,6 +9,7 @@ import {
   Badge,
   Touchable,
   Label,
+  AlertTitle,
 } from "@shopify/shop-minis-react";
 
 export function SecureStorageTest() {
@@ -112,13 +113,15 @@ export function SecureStorageTest() {
         {/* Message Alert */}
         {message && (
           <Alert variant={message.type === "error" ? "destructive" : "default"}>
-            {message.text}
+            <AlertTitle className="text-center">
+              {message.text}
+            </AlertTitle>
           </Alert>
         )}
 
         {/* Current Secret Display */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Current Secret</h3>
+          <h3 className="font-semibold text-gray-900">Current Secret</h3>
           <div className="space-y-3">
             {storedSecret ? (
               <div className="p-3 bg-gray-100 rounded font-mono text-sm break-all">
@@ -156,10 +159,10 @@ export function SecureStorageTest() {
 
         {/* Save New Secret */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Save New Secret</h3>
+          <h3 className="font-semibold text-gray-900">Save New Secret</h3>
           <div className="space-y-3">
             <div>
-              <Label>
+              <Label className="mb-2">
                 Secret Value
               </Label>
               <Input
@@ -182,7 +185,7 @@ export function SecureStorageTest() {
 
         {/* Info Section */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="font-semibold text-gray-900">
             About Secure Storage
           </h3>
           <div className="space-y-3 text-sm text-gray-600">
@@ -207,17 +210,20 @@ export function SecureStorageTest() {
               </ul>
             </div>
 
-            <Alert>
-              <strong>Note:</strong> SecureStorage stores a single encrypted
-              secret. For multiple key-value pairs, use JSON encoding or
-              consider using AsyncStorage for non-sensitive data.
-            </Alert>
+            <Card className="p-4">
+              <h4 className="font-semibold -mb-5">Note:</h4>
+              <p>
+                SecureStorage stores a single encrypted
+                secret. For multiple key-value pairs, use JSON encoding or
+                consider using AsyncStorage for non-sensitive data.
+              </p>
+            </Card>
           </div>
         </Card>
 
         {/* Example Usage */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Example Usage</h3>
+          <h3 className="font-semibold text-gray-900">Example Usage</h3>
           <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
             {`import { useSecureStorage } from '@shopify/shop-minis-react'
 
@@ -238,7 +244,7 @@ function MyComponent() {
 
         {/* Security Best Practices */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="font-semibold text-gray-900">
             Security Best Practices
           </h3>
           <ul className="space-y-2 text-sm text-gray-600">

@@ -6,6 +6,7 @@ import {
   Button,
   Badge,
   Alert,
+  AlertTitle,
   Touchable,
   Image,
 } from "@shopify/shop-minis-react";
@@ -137,7 +138,9 @@ export function CameraAccessTest() {
         {/* Error Alert */}
         {streamError && (
           <div className="p-4">
-            <Alert variant="destructive">Camera Error: {streamError}</Alert>
+            <Alert variant="destructive">
+              <AlertTitle className="text-center">Camera Error: {streamError}</AlertTitle>
+              </Alert>
           </div>
         )}
 
@@ -294,7 +297,7 @@ export function CameraAccessTest() {
 
         {/* Captured Images Gallery */}
         <div className="p-4">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between">
             <h3 className="font-semibold text-gray-900">
               Captured Images
               {capturedImages.length > 0 && (
@@ -342,7 +345,7 @@ export function CameraAccessTest() {
         {/* Features & Info */}
         <div className="p-4 space-y-4">
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-gray-900">
               Camera Features
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">
@@ -377,8 +380,24 @@ export function CameraAccessTest() {
             </ul>
           </Card>
 
+          <Alert className="bg-yellow-50 border-yellow-200 w-90">
+            <div className="w-80 flex gap-2">
+              <span className="text-yellow-600">⚠️</span>
+              <div>
+                <p className="font-medium text-yellow-900">
+                  Permission Required
+                </p>
+                <p className="text-sm text-yellow-700 mt-1">
+                  Camera access requires user permission. The app will
+                  automatically request permission when you first try to use the
+                  camera.
+                </p>
+              </div>
+            </div>
+          </Alert>
+
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+            <h3 className="font-semibold text-gray-900">Usage Example</h3>
             <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
               {`import { useImagePicker } from '@shopify/shop-minis-react'
 
@@ -423,22 +442,6 @@ function CameraCapture() {
 }`}
             </pre>
           </Card>
-
-          <Alert className="bg-yellow-50 border-yellow-200">
-            <div className="flex items-start gap-2">
-              <span className="text-yellow-600">⚠️</span>
-              <div>
-                <p className="font-medium text-yellow-900">
-                  Permission Required
-                </p>
-                <p className="text-sm text-yellow-700 mt-1">
-                  Camera access requires user permission. The app will
-                  automatically request permission when you first try to use the
-                  camera.
-                </p>
-              </div>
-            </div>
-          </Alert>
         </div>
       </div>
 

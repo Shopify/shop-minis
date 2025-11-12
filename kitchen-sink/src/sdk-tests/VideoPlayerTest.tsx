@@ -98,19 +98,23 @@ export function VideoPlayerTest() {
 
       <div className="flex-1 overflow-auto">
         {/* Main Video Player */}
-        <div className="bg-black">
-          <div className="aspect-video relative w-full h-full">
-            <VideoPlayer
-              ref={playerRef}
-              src={currentVideo.url}
-              poster={currentVideo.thumbnail}
-              autoplay={autoplay}
-              muted={muted}
-              onPlay={() => console.log("Video playing")}
-              onPause={() => console.log("Video paused")}
-              onEnded={() => console.log("Video ended")}
-              onReady={() => console.log("Video ready")}
-            />
+        <div className="bg-black p-4">
+          <div className="w-full max-w-full">
+            <div className="aspect-video bg-gray-900">
+              <VideoPlayer
+                ref={playerRef}
+                src={currentVideo.url}
+                poster={currentVideo.thumbnail}
+                autoplay={autoplay}
+                muted={muted}
+                width={350}
+                height={200}
+                onPlay={() => console.log("Video playing")}
+                onPause={() => console.log("Video paused")}
+                onEnded={() => console.log("Video ended")}
+                onReady={() => console.log("Video ready")}
+              />
+            </div>
           </div>
         </div>
 
@@ -174,7 +178,7 @@ export function VideoPlayerTest() {
               onClick={() => setCurrentVideo(video)}
             >
               <div className="flex gap-3">
-                <div className="w-32 h-20 bg-gray-100 rounded overflow-hidden flex-shrink-0">
+                <div className="w-32 h-20 bg-gray-100 rounded overflow-hidden shrink-0">
                   <Image
                     src={video.thumbnail}
                     alt={video.title}
@@ -283,7 +287,7 @@ function ProductVideo({ product }) {
           </Card>
 
           <Alert className="bg-blue-50 border-blue-200">
-            <div className="flex items-start gap-2">
+            <div className="flex items-start gap-2 w-full">
               <span className="text-blue-600">ℹ️</span>
               <div>
                 <p className="font-medium text-blue-900">Video Requirements</p>

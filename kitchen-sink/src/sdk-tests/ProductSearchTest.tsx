@@ -34,7 +34,7 @@ export function ProductSearchTest() {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="flex items-center px-4 py-3">
-                    <Touchable
+          <Touchable
             onClick={() => navigate(-1)}
             className="flex items-center justify-center w-10 h-10 -ml-2 rounded-lg"
             style={{ minHeight: "48px", minWidth: "48px" }}
@@ -143,13 +143,13 @@ export function ProductSearchTest() {
           {!loading && !products && (
             <div className="p-4 space-y-4">
               <Card className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h3 className="font-semibold text-gray-900">
                   Try Searching!
                 </h3>
                 <p className="text-sm text-gray-600">
                   Enter a search term above to find products. Try searching for:
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2">
                   {["Shoes", "Bags", "Electronics", "Clothing"].map(
                     (suggestion) => (
                                 <Touchable
@@ -167,7 +167,7 @@ export function ProductSearchTest() {
               </Card>
 
               <Card className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">
+                <h3 className="font-semibold text-gray-900">
                   Usage Example
                 </h3>
                 <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">

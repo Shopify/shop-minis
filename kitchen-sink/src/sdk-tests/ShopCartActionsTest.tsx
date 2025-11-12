@@ -40,7 +40,7 @@ export function ShopCartActionsTest() {
       <div className="flex-1 p-4 space-y-4 overflow-auto">
         {/* Introduction */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-2">
+          <h3 className="font-semibold text-gray-900">
             About Cart Action Buttons
           </h3>
           <p className="text-sm text-gray-600">
@@ -79,10 +79,10 @@ export function ShopCartActionsTest() {
         {products && products.length > 0 && (
           <>
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-4">
+              <h3 className="font-semibold text-gray-900">
                 AddToCartButton Examples
               </h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-gray-600">
                 These buttons add items to the cart without navigating away from
                 your mini.
               </p>
@@ -94,7 +94,7 @@ export function ShopCartActionsTest() {
                       key={product.id}
                       className="p-3 bg-gray-50 rounded-lg"
                     >
-                      <div className="flex items-center gap-3 mb-3">
+                      <div className="flex items-center gap-3 mb-2">
                         {product.featuredImage && (
                           <Image
                             src={product.featuredImage.url}
@@ -128,10 +128,10 @@ export function ShopCartActionsTest() {
 
             {/* Products with BuyNowButton */}
             <Card className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-4">
+              <h3 className="font-semibold text-gray-900">
                 BuyNowButton Examples
               </h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-gray-600">
                 These buttons add items to cart and immediately navigate to
                 checkout.
               </p>
@@ -143,7 +143,7 @@ export function ShopCartActionsTest() {
                       key={product.id}
                       className="p-3 bg-gray-50 rounded-lg"
                     >
-                      <div className="flex items-center gap-3 mb-3">
+                      <div className="flex items-center gap-3 mb-2">
                         {product.featuredImage && (
                           <Image
                             src={product.featuredImage.url}
@@ -179,7 +179,7 @@ export function ShopCartActionsTest() {
 
         {/* Props Documentation */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Component Props</h3>
+          <h3 className="font-semibold text-gray-900">Component Props</h3>
           <div className="space-y-2 text-sm">
             <div className="font-mono text-xs bg-gray-100 p-2 rounded">
               product: Product (required)
@@ -196,7 +196,7 @@ export function ShopCartActionsTest() {
 
         {/* Usage Example - AddToCartButton */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="font-semibold text-gray-900">
             AddToCartButton Usage
           </h3>
           <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
@@ -215,7 +215,7 @@ function ProductDetail({ product }) {
 
         {/* Usage Example - BuyNowButton */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="font-semibold text-gray-900">
             BuyNowButton Usage
           </h3>
           <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
