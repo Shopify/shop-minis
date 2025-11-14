@@ -1,6 +1,6 @@
 # Navigation with Deeplinks - Shop Mini Demo
 
-A comprehensive demonstration of navigation patterns, view transitions, and deeplinking in Shop Minis. This example showcases best practices for building mobile-first navigation experiences within the Shopify Shop App.
+A comprehensive demonstration of navigation patterns, view transitions, and deeplinking in Shop Minis. This example showcases best practices for building mobile-first navigation experiences within the Shop App.
 
 ## Features
 
@@ -79,80 +79,6 @@ When the dev server is running, press:
 - `a` - Open in Android Emulator  
 - `q` - Show QR code for physical device testing
 
-## Key Implementation Details
-
-### 1. MinisRouter with View Transitions
-
-```tsx
-<MinisRouter viewTransitions>
-  <Routes>
-    <Route path="/" element={<ListPage />} />
-    <Route path="/item/:id" element={<DetailPage />} />
-    {/* ... more routes */}
-  </Routes>
-</MinisRouter>
-```
-
-### 2. Deeplink Handling
-
-```tsx
-function DeeplinkHandler() {
-  const deeplink = useDeeplink()
-  const navigate = useNavigateWithTransition()
-
-  useEffect(() => {
-    if (deeplink) {
-      navigate(deeplink)
-    }
-  }, [deeplink, navigate])
-
-  return null
-}
-```
-
-### 3. Navigation with Transitions
-
-```tsx
-const navigate = useNavigateWithTransition()
-
-// Navigate to a detail page
-navigate('/item/item-42')
-
-// Navigate to a different tab
-navigate('/modals')
-```
-
-### 4. Virtualized Lists for Performance
-
-```tsx
-<List
-  items={items}
-  height={window.innerHeight - 140 - 76}
-  showScrollbar={true}
-  renderItem={item => (
-    <button onClick={() => navigate(`/item/${item.id}`)}>
-      {/* Item content */}
-    </button>
-  )}
-/>
-```
-
-## Mobile-First Design Principles
-
-### Touch Targets
-- All interactive elements have a minimum height of 48px
-- Tab bar items are 60px tall for easy thumb access
-- Buttons use `min-h-[52px]` for comfortable tapping
-
-### Safe Areas
-- Tab bar includes `safe-area-inset-bottom` for devices with home indicators
-- Content areas account for fixed headers and tab bars
-
-### Performance
-- List virtualization for 100+ items
-- Smooth view transitions
-- Optimized re-renders with proper React hooks
-
 ## Navigation Patterns Demonstrated
 
 ### 1. List Page (Master View)
@@ -200,17 +126,6 @@ Four distinct modal patterns:
 - Navigation items
 - Action buttons
 
-## Deeplinking Examples
-
-Share these URLs to test deeplink navigation:
-
-```
-mini://navigation-with-deeplinks/
-mini://navigation-with-deeplinks/item/item-42
-mini://navigation-with-deeplinks/modals
-mini://navigation-with-deeplinks/settings
-```
-
 ## Best Practices Demonstrated
 
 1. **SDK-First Approach**: Uses Shop Minis React SDK components (Button, List, Alert)
@@ -221,20 +136,9 @@ mini://navigation-with-deeplinks/settings
 6. **View Transitions**: Smooth animations between routes
 7. **Deeplinking**: Complete support for shareable URLs
 
-## Technologies Used
-
-- **React 18** - UI framework
-- **TypeScript** - Type safety
-- **React Router 7** - Client-side routing
-- **@shopify/shop-minis-react** - Shop Minis SDK
-- **Tailwind CSS v4** - Styling
-- **Lucide React** - Consistent icons
-
 ## Learn More
 
 - [Shop Minis Documentation](https://shopify.dev/docs/api/shop-minis)
-- [Navigation Patterns Guide](https://shopify.dev/docs/api/shop-minis/navigation)
-- [Deeplinking Guide](https://shopify.dev/docs/api/shop-minis/deeplinking)
 
 ## Contributing
 

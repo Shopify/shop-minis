@@ -1,7 +1,8 @@
 {
   "name": "navigation-with-deeplinks",
   "permissions": [],
-  "scopes": [
-    "product_list:write"
-  ]
+  "scopes": [],
+  "handle": "navigation-with-deeplinks",
+  "privacy_policy_url": "https://example.com/privacy",
+  "terms_url": "https://example.com/terms"
 }

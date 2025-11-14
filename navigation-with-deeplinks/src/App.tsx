@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   MinisRouter,
   useDeeplink,
@@ -14,16 +14,14 @@ import { SettingsPage } from "./pages/SettingsPage";
 function DeeplinkHandler() {
   const { path } = useDeeplink();
   const navigate = useNavigateWithTransition();
+  const hasNavigatedRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (path) {
-      // Handle deeplink navigation
-      // The deeplink path will be used to navigate to the appropriate page
-      // Navigate to the deeplink path
-      // The path from the deeplink should match our route structure
+    if (path && hasNavigatedRef.current !== path) {
+      hasNavigatedRef.current = path;
       navigate(path);
     }
-  }, [path]);
+  }, [path, navigate]);
 
   return null;
 }
@@ -33,8 +31,9 @@ function AppContent() {
     <>
       <DeeplinkHandler />
       <Routes>
-        <Route index element={<ListPage />} />
-        <Route path="/item/:id" element={<DetailPage />} />
+        <Route path="/" element={<ListPage />}>
+          <Route path="/item/:id" element={<DetailPage />} />
+        </Route>
         <Route path="/modals" element={<ModalsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
       </Routes>

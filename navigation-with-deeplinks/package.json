@@ -10,20 +10,19 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
+    "@shopify/shop-minis-cli": "0.0.209",
     "@tailwindcss/vite": "^4.1.8",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
     "tailwindcss": "^4.1.8",
-    "typescript": "^5.8.3",
-    "@shopify/shop-minis-cli": "0.0.207"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@shopify/shop-minis-react": "0.0.0-snapshot.20251112124338",
-    "lucide-react": "^0.460.0",
+    "@shopify/shop-minis-react": "0.3.1",
+    "lucide-react": "0.513.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router": "^7.1.1",
-    "react-router-dom": "^7.1.1"
+    "react-router": "7.7.0"
   }
 }

@@ -16,9 +16,9 @@ export function DetailPage() {
   const category = categories[parseInt(itemNumber) % categories.length];
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="fixed inset-0 z-50 flex flex-col bg-gray-50">
       {/* Header */}
-      <div className="sticky top-0 bg-white border-b border-gray-200 z-10">
+      <div className="bg-white border-b border-gray-200 z-10">
         <div className="flex items-center px-4 py-3">
           <Touchable
             onClick={() => navigate(-1)}
@@ -32,7 +32,7 @@ export function DetailPage() {
       </div>
 
       {/* Content */}
-      <div className="flex-1">
+      <div className="flex-1 overflow-y-auto">
         {/* Hero Image Placeholder */}
         <div className="w-full h-64 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
           <div className="text-white text-center">
