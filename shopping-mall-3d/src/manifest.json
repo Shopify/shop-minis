@@ -1,0 +1,11 @@
+{
+  "name": "Shopping Mall 3D",
+  "permissions": [],
+  "scopes": [
+    "product_list:write",
+    "shops:recommendations:read"
+  ],
+  "handle": "shopping-mall-3d",
+  "privacy_policy_url": "https://example.com/privacy-policy",
+  "terms_url": "https://example.com/terms-of-service"
+}

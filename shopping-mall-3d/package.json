@@ -1,0 +1,29 @@
+{
+  "name": "shopping-mall-3-d",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A Shop Mini with WebView and Vite",
+  "main": "index.tsx",
+  "scripts": {
+    "start": "shop-minis dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@shopify/shop-minis-cli": "0.0.211",
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/three": "^0.181.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@react-three/fiber": "8.18.0",
+    "@shopify/shop-minis-react": "0.4.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "three": "0.178.0"
+  }
+}
