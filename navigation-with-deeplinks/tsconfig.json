@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "jsx": "react-jsx",
+    "lib": ["es2019", "dom"],
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "noEmit": true,
+    "incremental": true,
+    "strict": true,
+    "target": "esnext",
+    "skipLibCheck": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "useUnknownInCatchVariables": false
+  },
+  "exclude": ["node_modules", "dist"]
+}
