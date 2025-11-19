@@ -14,20 +14,14 @@ export function ShopNavigationTest() {
   const navigate = useNavigateWithTransition();
   const shopNav = useShopNavigation();
   const [productId, setProductId] = useState(
-    "gid://shopify/Product/7234590834757"
+    "gid://shopify/Product/9158436028667"
   );
-  const [shopId, setShopId] = useState("gid://shopify/Shop/123");
+  const [shopId, setShopId] = useState("gid://shopify/Shop/86836871454");
   const [orderId, setOrderId] = useState("gid://shopify/Order/456");
   const [checkoutShopId, setCheckoutShopId] = useState(
-    "gid://shopify/Shop/123"
+    "gid://shopify/Shop/86836871454"
   );
-  const [message, setMessage] = useState<string | null>(null);
-
   const handleNavigation = (action: string, destination: string) => {
-    setMessage(`Navigating to ${destination}...`);
-    setTimeout(() => setMessage(null), 2000);
-
-    // Log the action since we're in a test environment
     console.log(`Shop Navigation: ${action} -> ${destination}`);
   };
 
@@ -55,12 +49,9 @@ export function ShopNavigationTest() {
       </div>
 
       <div className="flex-1 p-4 space-y-4 overflow-auto">
-        {/* Navigation Feedback */}
-        {message && <Alert>{message}</Alert>}
-
         {/* Cart Navigation */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Cart Navigation</h3>
+          <h3 className="font-semibold text-gray-900">Cart Navigation</h3>
           <Button
             variant="default"
             onClick={() => {
@@ -78,7 +69,7 @@ export function ShopNavigationTest() {
 
         {/* Product Navigation */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">
+          <h3 className="font-semibold text-gray-900">
             Product Navigation
           </h3>
           <div className="space-y-3">
@@ -109,7 +100,7 @@ export function ShopNavigationTest() {
 
         {/* Shop Navigation */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Shop Navigation</h3>
+          <h3 className="font-semibold text-gray-900">Shop Navigation</h3>
           <div className="space-y-3">
             <div>
               <Label>Shop ID (GID)</Label>
@@ -138,7 +129,7 @@ export function ShopNavigationTest() {
 
         {/* Order Navigation */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Order Navigation</h3>
+          <h3 className="font-semibold text-gray-900">Order Navigation</h3>
           <div className="space-y-3">
             <div>
               <Label>Order ID (GID)</Label>
@@ -167,7 +158,7 @@ export function ShopNavigationTest() {
 
         {/* Checkout Navigation */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">
+          <h3 className="font-semibold text-gray-900">
             Checkout Navigation
           </h3>
           <div className="space-y-3">
@@ -201,7 +192,7 @@ export function ShopNavigationTest() {
 
         {/* Available Methods */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="font-semibold text-gray-900">
             Available Methods
           </h3>
           <div className="space-y-2 text-sm">
@@ -225,7 +216,7 @@ export function ShopNavigationTest() {
 
         {/* Usage Example */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+          <h3 className="font-semibold text-gray-900">Usage Example</h3>
           <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
             {`import { useShopNavigation } from '@shopify/shop-minis-react'
 

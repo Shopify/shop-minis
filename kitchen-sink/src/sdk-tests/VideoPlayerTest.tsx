@@ -9,43 +9,44 @@ import {
   Input,
   Touchable,
   Image,
+  AlertDescription,
 } from "@shopify/shop-minis-react";
 
 // Mock video data
 const mockVideos = [
   {
     id: "1",
-    title: "Product Demo Video",
+    title: "Big Buck Bunny",
     url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     thumbnail:
-      "https://placehold.co/800x450/4F46E5/ffffff?text=Product+Demo",
+      "https://placehold.co/800x450/4F46E5/ffffff?text=Big+Buck+Bunny",
     duration: "9:56",
     description: "Watch how our product works in real-world scenarios",
   },
   {
     id: "2",
-    title: "How It's Made",
+    title: "Elephants Dream",
     url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     thumbnail:
-      "https://placehold.co/800x450/10B981/ffffff?text=How+Its+Made",
+      "https://placehold.co/800x450/10B981/ffffff?text=Elephants+Dream",
     duration: "10:53",
     description: "Behind the scenes of our manufacturing process",
   },
   {
     id: "3",
-    title: "Customer Testimonial",
+    title: "For Bigger Blazes",
     url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     thumbnail:
-      "https://placehold.co/800x450/DC2626/ffffff?text=Testimonial",
+      "https://placehold.co/800x450/DC2626/ffffff?text=For+Bigger+Blazes",
     duration: "0:15",
     description: "Hear what our customers have to say",
   },
   {
     id: "4",
-    title: "Installation Guide",
+    title: "For Bigger Escapes",
     url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     thumbnail:
-      "https://placehold.co/800x450/F59E0B/ffffff?text=Installation",
+      "https://placehold.co/800x450/F59E0B/ffffff?text=For+Bigger+Escapes",
     duration: "0:15",
     description: "Step-by-step installation instructions",
   },
@@ -62,7 +63,7 @@ export function VideoPlayerTest() {
   const handlePlayCustomUrl = () => {
     if (customUrl) {
       setCurrentVideo({
-        id: "custom",
+        id: `custom-${Date.now()}`, // Unique ID to force re-render
         title: "Custom Video",
         url: customUrl,
         thumbnail:
@@ -72,7 +73,7 @@ export function VideoPlayerTest() {
       });
     }
   };
-
+  
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       {/* Header */}
@@ -98,19 +99,24 @@ export function VideoPlayerTest() {
 
       <div className="flex-1 overflow-auto">
         {/* Main Video Player */}
-        <div className="bg-black">
-          <div className="aspect-video relative w-full h-full">
-            <VideoPlayer
-              ref={playerRef}
-              src={currentVideo.url}
-              poster={currentVideo.thumbnail}
-              autoplay={autoplay}
-              muted={muted}
-              onPlay={() => console.log("Video playing")}
-              onPause={() => console.log("Video paused")}
-              onEnded={() => console.log("Video ended")}
-              onReady={() => console.log("Video ready")}
-            />
+        <div className="bg-black p-4">
+          <div className="w-full w-max-full">
+            <div className="aspect-video bg-gray-900">
+              <VideoPlayer
+                key={currentVideo.id}
+                ref={playerRef}
+                src={currentVideo.url}
+                poster={currentVideo.thumbnail}
+                autoplay={autoplay}
+                muted={muted}
+                width={370}
+                height={220}
+                onPlay={() => console.log("Video playing")}
+                onPause={() => console.log("Video paused")}
+                onEnded={() => console.log("Video ended")}
+                onReady={() => console.log("Video ready")}
+              />
+            </div>
           </div>
         </div>
 
@@ -128,7 +134,7 @@ export function VideoPlayerTest() {
 
         {/* Player Controls */}
         <div className="p-4 bg-white border-b space-y-3">
-          <h3 className="font-semibold text-gray-900 mb-3">Player Settings</h3>
+          <h3 className="font-semibold text-gray-900">Player Settings</h3>
 
           {/* Autoplay, Muted, Loop */}
           <div className="flex gap-2">
@@ -140,7 +146,10 @@ export function VideoPlayerTest() {
               {autoplay ? "✓ Autoplay" : "Autoplay"}
             </Button>
             <Button
-              onClick={() => setMuted(!muted)}
+              onClick={() => {
+                const newMutedState = !muted;
+                setMuted(newMutedState);
+              }}
               variant={muted ? "default" : "secondary"}
               size="sm"
             >
@@ -149,16 +158,60 @@ export function VideoPlayerTest() {
           </div>
 
           {/* Custom URL */}
-          <div className="flex gap-2">
+          <div className="gap-2">
             <Input
               value={customUrl}
               onChange={(e) => setCustomUrl(e.target.value)}
               placeholder="Enter custom video URL..."
-              className="flex-1"
+              className="flex-1 mb-2"
             />
-            <Button onClick={handlePlayCustomUrl} variant="default">
+            <Button onClick={handlePlayCustomUrl} variant="default" className="mb-2">
               Play URL
             </Button>
+            <Alert className="bg-purple-50 border-purple-200">
+              <AlertDescription className="flex items-start gap-2">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-purple-900 mb-2">
+                    Example Video URLs:
+                  </h3>
+                  <div className="space-y-2 text-xs">
+                    <div
+                      className="bg-purple-100 p-2 rounded border border-purple-200 cursor-pointer hover:bg-purple-200 transition-colors"
+                      onClick={() =>
+                        setCustomUrl(
+                          "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+                        )
+                      }
+                    >
+                      <div className="font-medium text-purple-900 mb-1">
+                        Sintel (Open Movie)
+                      </div>
+                      <code className="text-purple-700 break-all">
+                        https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4
+                      </code>
+                    </div>
+                    <div
+                      className="bg-purple-100 p-2 rounded border border-purple-200 cursor-pointer hover:bg-purple-200 transition-colors"
+                      onClick={() =>
+                        setCustomUrl(
+                          "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+                        )
+                      }
+                    >
+                      <div className="font-medium text-purple-900 mb-1">
+                        Tears of Steel (Open Movie)
+                      </div>
+                      <code className="text-purple-700 break-all">
+                        https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4
+                      </code>
+                    </div>
+                  </div>
+                  <p className="text-xs text-purple-700 mt-2">
+                    Tap an example to copy it to the input above
+                  </p>
+                </div>
+              </AlertDescription>
+            </Alert>
           </div>
         </div>
 
@@ -174,7 +227,7 @@ export function VideoPlayerTest() {
               onClick={() => setCurrentVideo(video)}
             >
               <div className="flex gap-3">
-                <div className="w-32 h-20 bg-gray-100 rounded overflow-hidden flex-shrink-0">
+                <div className="w-32 h-20 bg-gray-100 rounded overflow-hidden shrink-0">
                   <Image
                     src={video.thumbnail}
                     alt={video.title}
@@ -207,7 +260,7 @@ export function VideoPlayerTest() {
         {/* Features & Info */}
         <div className="p-4 space-y-4">
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-gray-900">
               VideoPlayer Features
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">
@@ -246,8 +299,22 @@ export function VideoPlayerTest() {
             </ul>
           </Card>
 
+          <Alert className="bg-blue-50 border-blue-200">
+            <div className="flex items-start gap-2 w-85">
+              <span className="text-blue-600">ℹ️</span>
+              <div>
+                <p className="font-medium text-blue-900">Video Requirements</p>
+                <p className="text-sm text-blue-700 mt-1">
+                  Videos should be optimized for mobile playback. Recommended:
+                  MP4 format, H.264 codec, max 1080p resolution, under 50MB for
+                  best performance.
+                </p>
+              </div>
+            </div>
+          </Alert>
+
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+            <h3 className="font-semibold text-gray-900">Usage Example</h3>
             <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
               {`import { VideoPlayer } from '@shopify/shop-minis-react'
 
@@ -281,20 +348,6 @@ function ProductVideo({ product }) {
 // - Adaptive bitrate streaming (HLS/DASH)`}
             </pre>
           </Card>
-
-          <Alert className="bg-blue-50 border-blue-200">
-            <div className="flex items-start gap-2">
-              <span className="text-blue-600">ℹ️</span>
-              <div>
-                <p className="font-medium text-blue-900">Video Requirements</p>
-                <p className="text-sm text-blue-700 mt-1">
-                  Videos should be optimized for mobile playback. Recommended:
-                  MP4 format, H.264 codec, max 1080p resolution, under 50MB for
-                  best performance.
-                </p>
-              </div>
-            </div>
-          </Alert>
         </div>
       </div>
     </div>

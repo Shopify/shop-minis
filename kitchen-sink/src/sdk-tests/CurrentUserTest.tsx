@@ -25,7 +25,7 @@ export function CurrentUserTest() {
           </Touchable>
           <div className="flex-1 ml-2">
             <h1 className="text-lg font-bold text-gray-900">useCurrentUser</h1>
-            <p className="text-xs text-gray-600">Access current user data</p>
+            <p className="text-xs text-gray-600">Access current user's profile</p>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@ export function CurrentUserTest() {
         <div className="space-y-4">
           {/* Description */}
           <Card className="p-4">
-            <h2 className="font-semibold text-gray-900 mb-2">
+            <h2 className="font-semibold text-gray-900">
               About this Hook
             </h2>
             <p className="text-sm text-gray-600">
@@ -55,7 +55,7 @@ export function CurrentUserTest() {
           {/* Error State */}
           {error && (
             <Card className="p-4 border-red-200 bg-red-50">
-              <h3 className="font-semibold text-red-900 mb-1">
+              <h3 className="font-semibold text-red-900">
                 Error Loading User
               </h3>
               <p className="text-sm text-red-700">{error.message}</p>
@@ -66,19 +66,20 @@ export function CurrentUserTest() {
           {currentUser && !loading && (
             <>
               <Card className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">
+                <h3 className="font-semibold text-gray-900">
                   User Information
                 </h3>
                 <div className="space-y-3">
                   {currentUser.avatarImage?.url && (
                     <div className="flex items-center gap-3">
-                      <Image
-                        src={currentUser.avatarImage.url}
-                        alt="User avatar"
-                        className="w-16 h-16 rounded-full"
-                        aspectRatio="1"
-                        objectFit="cover"
-                      />
+                      <div className="w-16 h-16 rounded-full overflow-hidden">
+                        <Image
+                          src={currentUser.avatarImage.url}
+                          alt="User avatar"
+                          aspectRatio="1"
+                          objectFit="cover"
+                        />
+                      </div>
                       <div>
                         <span className="text-xs text-gray-500 uppercase tracking-wider block">
                           Avatar
@@ -102,7 +103,7 @@ export function CurrentUserTest() {
               </Card>
 
               <Card className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Raw Data</h3>
+                <h3 className="font-semibold text-gray-900">Raw Data</h3>
                 <pre className="text-xs bg-gray-100 p-3 rounded overflow-x-auto">
                   {JSON.stringify(currentUser, null, 2)}
                 </pre>
@@ -122,7 +123,7 @@ export function CurrentUserTest() {
 
           {/* Code Example */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+            <h3 className="font-semibold text-gray-900">Usage Example</h3>
             <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
               {`import { useCurrentUser } from '@shopify/shop-minis-react'
 

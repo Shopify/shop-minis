@@ -59,7 +59,7 @@ function Sphere() {
     <mesh ref={meshRef} position={[0, 0, 0]}>
       <sphereGeometry args={[0.7, 32, 32]} />
       {/* @ts-ignore */}
-      <meshStandardMaterial color="#4F46E5" roughness={0.2} metalness={0.8} />
+      <meshStandardMaterial color="yellow" roughness={0.2} metalness={0.3} />
     </mesh>
   );
 }
@@ -210,7 +210,7 @@ export function ThreeDLibraries() {
           {/* Canvas Instructions */}
           <div className="absolute bottom-4 left-4 right-4 bg-black/50 text-white p-2 rounded text-xs">
             {activeDemo === "boxes" &&
-              "Click boxes to scale, hover to change color"}
+              "Tap boxes to scale"}
             {activeDemo === "sphere" &&
               "Animated sphere with metallic material"}
             {activeDemo === "torus" &&
@@ -222,15 +222,15 @@ export function ThreeDLibraries() {
         <div className="p-4 space-y-4">
           {/* Scene Controls */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Scene Controls</h3>
+            <h3 className="font-semibold text-gray-900">Scene Controls</h3>
             <div className="space-y-3">
               <div>
-                <Label>
+                <Label className="mb-2">
                   Background Color
                 </Label>
                 <div className="flex gap-2">
                   {["#f3f4f6", "#1f2937", "#3b82f6", "#10b981"].map((color) => (
-                              <Touchable
+                    <Touchable
                       key={color}
                       onClick={() => setBgColor(color)}
                       className="w-10 h-10 rounded border-2"
@@ -245,29 +245,9 @@ export function ThreeDLibraries() {
             </div>
           </Card>
 
-          {/* Demo Info */}
-          <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
-              {activeDemo === "boxes" && "Interactive Boxes"}
-              {activeDemo === "sphere" && "Animated Sphere"}
-              {activeDemo === "torus" && "Torus Knot"}
-              {activeDemo === "particles" && "Particle System"}
-            </h3>
-            <p className="text-sm text-gray-600">
-              {activeDemo === "boxes" &&
-                "Four colored boxes that rotate continuously. Click to scale them up/down, hover to see color changes."}
-              {activeDemo === "sphere" &&
-                "A metallic sphere that moves up and down using sine wave animation."}
-              {activeDemo === "torus" &&
-                "A torus knot with normal material showing surface normals as colors."}
-              {activeDemo === "particles" &&
-                "A cloud of 500 particles rotating in 3D space."}
-            </p>
-          </Card>
-
           {/* 3D Primitives */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">3D Primitives</h3>
+            <h3 className="font-semibold text-gray-900">3D Primitives</h3>
             <div className="grid grid-cols-3 gap-3 text-sm">
               <div className="text-center">
                 <div className="text-2xl mb-1">📦</div>
@@ -298,7 +278,7 @@ export function ThreeDLibraries() {
 
           {/* Materials */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Materials</h3>
+            <h3 className="font-semibold text-gray-900">Materials</h3>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 bg-gray-400 rounded"></div>
@@ -325,7 +305,7 @@ export function ThreeDLibraries() {
 
           {/* Features */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-gray-900">
               React Three Fiber Features
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">

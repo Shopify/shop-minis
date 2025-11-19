@@ -32,33 +32,17 @@ export function SearchComponentTest() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="flex items-center px-4 py-3">
-                    <Touchable
-            onClick={() => navigate(-1)}
-            className="flex items-center justify-center w-10 h-10 -ml-2 rounded-lg"
-            style={{ minHeight: "48px", minWidth: "48px" }}
-          >
-            <span className="text-xl">←</span>
-          </Touchable>
-          <div className="flex-1 ml-2">
-            <h1 className="text-lg font-bold text-gray-900">
-              Search Component
-            </h1>
-            <p className="text-xs text-gray-600">SDK Search UI component</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto mt-15">
         {/* Search Bar Section */}
         <div className="bg-white p-4 border-b">
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-4">
+            <h3 className="font-semibold text-gray-900 -mb-16">
               Search Products
             </h3>
-            <Search initialQuery={searchQuery} />
+            <Search
+              initialQuery={searchQuery}
+              placeholder="Search products..."
+            />
           </Card>
         </div>
 
@@ -68,7 +52,7 @@ export function SearchComponentTest() {
             <Card className="p-4">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="font-semibold text-gray-900">Recent Searches</h3>
-                          <Touchable
+                <Touchable
                   onClick={handleClearHistory}
                   className="text-xs text-red-600 font-medium"
                 >
@@ -77,7 +61,7 @@ export function SearchComponentTest() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {searchHistory.map((query, index) => (
-                            <Touchable
+                  <Touchable
                     key={index}
                     onClick={() => handleSearch(query)}
                     className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full text-sm active:bg-gray-200"
@@ -111,7 +95,7 @@ export function SearchComponentTest() {
           {/* No Results */}
           {products && products.length === 0 && searchQuery && (
             <Card className="p-6 text-center">
-              <p className="text-gray-500 mb-2">No results found</p>
+              <p className="text-gray-500">No results found</p>
               <p className="text-sm text-gray-400">
                 Try searching for something else
               </p>
@@ -120,7 +104,7 @@ export function SearchComponentTest() {
 
           {/* Component Features */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">
+            <h3 className="font-semibold text-gray-900">
               Component Features
             </h3>
             <div className="space-y-2">
@@ -157,7 +141,7 @@ export function SearchComponentTest() {
 
           {/* Usage Example */}
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+            <h3 className="font-semibold text-gray-900">Usage Example</h3>
             <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
               {`import { Search } from '@shopify/shop-minis-react'
 
@@ -181,6 +165,24 @@ function ProductSearch() {
 }`}
             </pre>
           </Card>
+        </div>
+      </div>
+      {/* Footnote */}
+      <div className="bg-white border-t-2 border-gray-200 sticky bottom-0 z-10">
+        <div className="flex items-center px-4 py-3">
+          <Touchable
+            onClick={() => navigate(-1)}
+            className="flex items-center justify-center w-10 h-10 rounded-lg"
+            style={{ minHeight: "48px", minWidth: "48px" }}
+          >
+            <span className="text-xl">←</span>
+          </Touchable>
+          <div className="flex-1 ml-2">
+            <h1 className="text-lg font-bold text-gray-900">
+              Search Component
+            </h1>
+            <p className="text-xs text-gray-600">SDK Search UI component</p>
+          </div>
         </div>
       </div>
     </div>

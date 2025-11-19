@@ -51,7 +51,7 @@ export function EmojiLibraries() {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="flex items-center px-4 py-3">
-                    <Touchable
+          <Touchable
             onClick={() => navigate(-1)}
             className="flex items-center justify-center w-10 h-10 -ml-2 rounded-lg"
             style={{ minHeight: "48px", minWidth: "48px" }}
@@ -71,8 +71,8 @@ export function EmojiLibraries() {
         {/* Selected Emojis */}
         {selectedEmojis.length > 0 && (
           <Card className="p-4">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="font-semibold text-gray-900">
+            <div className="flex items-center justify-between">
+              <h3 className="font-semibold text-gray-900 w-90">
                 Selected Emojis ({selectedEmojis.length})
               </h3>
               <Button onClick={clearEmojis} variant="secondary" size="sm">
@@ -97,7 +97,7 @@ export function EmojiLibraries() {
 
         {/* Picker Controls */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Emoji Picker</h3>
+          <h3 className="font-semibold text-gray-900">Emoji Picker</h3>
           <div className="space-y-3">
             <Button
               onClick={() => setShowPicker(!showPicker)}
@@ -167,7 +167,7 @@ export function EmojiLibraries() {
         {/* Recent Emojis */}
         {recentEmojis.length > 0 && (
           <Card className="p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Recent Emojis</h3>
+            <h3 className="font-semibold text-gray-900">Recent Emojis</h3>
             <div className="flex flex-wrap gap-2">
               {recentEmojis.map((emoji, index) => (
                           <Touchable
@@ -188,7 +188,7 @@ export function EmojiLibraries() {
 
         {/* Frequently Used */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="font-semibold text-gray-900">
             Frequently Used Emojis
           </h3>
           <div className="grid grid-cols-5 gap-2">
@@ -209,7 +209,7 @@ export function EmojiLibraries() {
 
         {/* Emoji Categories Demo */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Emoji Categories</h3>
+          <h3 className="font-semibold text-gray-900">Emoji Categories</h3>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <span className="text-xl">😀</span>
@@ -248,7 +248,7 @@ export function EmojiLibraries() {
 
         {/* Features */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="font-semibold text-gray-900">
             Emoji Mart Features
           </h3>
           <ul className="space-y-2 text-sm text-gray-600">

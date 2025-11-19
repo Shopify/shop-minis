@@ -10,7 +10,6 @@ import {
   SearchComponentTest,
   ButtonVariantsTest,
   ShopNavigationTest,
-  UIComponentsTest,
   ShopCartActionsTest,
   SecureStorageTest,
   GenerateUserTokenTest,
@@ -59,7 +58,6 @@ export function App() {
           path="/sdk-tests/shop-navigation"
           element={<ShopNavigationTest />}
         />
-        <Route path="/sdk-tests/card-input" element={<UIComponentsTest />} />
         <Route
           path="/sdk-tests/cart-actions"
           element={<ShopCartActionsTest />}

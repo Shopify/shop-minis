@@ -8,6 +8,7 @@ import {
   Alert,
   Touchable,
   Image,
+  AlertTitle,
 } from "@shopify/shop-minis-react";
 
 export function ImagePickerTest() {
@@ -85,11 +86,15 @@ export function ImagePickerTest() {
 
       <div className="flex-1 p-4 space-y-4">
         {/* Error Alert */}
-        {error && <Alert variant="destructive">{error}</Alert>}
+        {error && <Alert variant="destructive">
+          <AlertTitle className="text-center">
+            {error}
+          </AlertTitle>
+        </Alert>}
 
         {/* Picker Options */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-4">Select Images</h3>
+          <h3 className="font-semibold text-gray-900">Select Images</h3>
 
           <div className="space-y-3">
             <Button
@@ -127,7 +132,7 @@ export function ImagePickerTest() {
         {/* Selected Images */}
         {selectedImages.length > 0 && (
           <Card className="p-4">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between">
               <h3 className="font-semibold text-gray-900">Selected Images</h3>
               <div className="flex items-center gap-2">
                 <Badge variant="secondary">
@@ -166,7 +171,7 @@ export function ImagePickerTest() {
 
         {/* API Info */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">API Methods</h3>
+          <h3 className="font-semibold text-gray-900">API Methods</h3>
           <div className="space-y-2">
             <div className="flex items-start gap-2">
               <Badge>openGallery()</Badge>
@@ -181,7 +186,7 @@ export function ImagePickerTest() {
 
         {/* Usage Example */}
         <Card className="p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Usage Example</h3>
+          <h3 className="font-semibold text-gray-900">Usage Example</h3>
           <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
             {`import { useImagePicker } from '@shopify/shop-minis-react'
 
