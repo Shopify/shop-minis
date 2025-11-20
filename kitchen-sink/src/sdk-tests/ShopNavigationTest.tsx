@@ -5,7 +5,6 @@ import {
   Card,
   Button,
   Input,
-  Alert,
   Touchable,
   Label,
 } from "@shopify/shop-minis-react";
