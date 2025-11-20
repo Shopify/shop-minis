@@ -81,7 +81,6 @@ export function SDKTestsPage() {
       category: "UI",
     },
     { name: "Alert & Badge", path: "/sdk-tests/alert-badge", category: "UI" },
-    { name: "Input & Label", path: "/sdk-tests/label-input", category: "UI" },
     { name: "Skeleton", path: "/sdk-tests/skeleton", category: "UI" },
     { name: "Button Variants", path: "/sdk-tests/buttons", category: "UI" },
   ];
