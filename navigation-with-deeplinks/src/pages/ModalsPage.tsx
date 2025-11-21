@@ -23,10 +23,18 @@ export function ModalsPage() {
   const [showBottomSheet, setShowBottomSheet] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showFullScreenModal, setShowFullScreenModal] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Handle animation state when modal opens
+  useEffect(() => {
+    if (showFullScreenModal) {
+      setIsAnimating(true);
+    }
+  }, [showFullScreenModal]);
 
   // Prevent background scrolling for full screen modal only (SDK components handle this automatically)
   useEffect(() => {
-    if (!showFullScreenModal) return;
+    if (!showFullScreenModal && !isAnimating) return;
 
     // Save current scroll position
     const scrollY = window.scrollY;
@@ -47,7 +55,16 @@ export function ModalsPage() {
       document.body.style.overflow = "";
       window.scrollTo(0, scrollY);
     };
-  }, [showFullScreenModal]);
+  }, [showFullScreenModal, isAnimating]);
+
+  // Close modal with animation
+  const closeFullScreenModal = () => {
+    setIsAnimating(false);
+    // Wait for animation to complete before hiding
+    setTimeout(() => {
+      setShowFullScreenModal(false);
+    }, 300); // Match the transition duration
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
@@ -224,7 +241,11 @@ export function ModalsPage() {
       {/* Full Screen Modal */}
       {showFullScreenModal && (
         <div
-          className="fixed inset-0 bg-white z-50 flex flex-col"
+          className={`fixed inset-0 bg-white z-50 flex flex-col transition-all duration-300 ease-out ${
+            isAnimating
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4"
+          }`}
           style={{ touchAction: "pan-y" }}
         >
           {/* Header */}
@@ -232,7 +253,7 @@ export function ModalsPage() {
             <div className="flex items-center justify-between px-4 py-3">
               <h3 className="text-lg font-semibold">Full Screen Modal</h3>
               <Touchable
-                onClick={() => setShowFullScreenModal(false)}
+                onClick={closeFullScreenModal}
                 className="p-2 hover:bg-gray-100 rounded-full min-h-[48px] min-w-[48px] flex items-center justify-center"
                 aria-label="Close"
               >
