@@ -11,8 +11,9 @@
     "user_settings:read",
     "product_list:write"
   ],
-  "privacy_policy_url": "https://example.com/privacy",
-  "terms_url": "https://example.com/terms",
+  "description": "A testing Mini for all components found in the Shop Minis SDK.",
+  "privacy_policy_url": "https://shopify.dev/docs/api/shop-minis/guidelines#data-privacy",
+  "terms_url": "https://shopify.dev/docs/api/shop-minis/guidelines#general-guidelines",
   "handle": "kitchen-sink",
   "trusted_domains": [
     "placehold.co",

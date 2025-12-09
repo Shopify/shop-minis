@@ -4,13 +4,17 @@
   "version": "0.0.1",
   "description": "A Shop Mini with WebView and Vite",
   "main": "index.tsx",
+  "browserslist": [
+    "ios >= 15",
+    "android >= 138"
+  ],
   "scripts": {
     "start": "shop-minis dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@shopify/shop-minis-cli": "0.0.212",
+    "@shopify/shop-minis-cli": "0.0.224",
     "@tailwindcss/vite": "^4.1.8",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
@@ -25,7 +29,7 @@
     "@emoji-mart/data": "1.2.1",
     "@emoji-mart/react": "1.1.1",
     "@react-three/fiber": "8.18.0",
-    "@shopify/shop-minis-react": "0.4.2",
+    "@shopify/shop-minis-react": "0.4.10",
     "@tanstack/react-query": "5.86.0",
     "embla-carousel-auto-scroll": "8.6.0",
     "embla-carousel-autoplay": "8.6.0",

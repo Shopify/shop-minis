@@ -1,5 +1,6 @@
 import { MinisRouter } from "@shopify/shop-minis-react";
 import { Routes, Route } from "react-router";
+import { lazy, Suspense } from "react";
 import { HomePage, SDKTestsPage, LibrariesPage } from "./pages";
 import {
   CurrentUserTest,
@@ -23,14 +24,25 @@ import {
   SkeletonTest,
   MicrophoneTest
 } from "./sdk-tests";
-import {
-  AnimationUILibraries,
-  StateUtilsLibraries,
-  CarouselLibraries,
-  DragDropLibraries,
-  EmojiLibraries,
-  ThreeDLibraries,
-} from "./libraries";
+
+// Lazy load heavy library components to prevent Android WebView crashes
+const AnimationUILibraries = lazy(() => import("./libraries/AnimationUILibraries").then(m => ({ default: m.AnimationUILibraries })));
+const StateUtilsLibraries = lazy(() => import("./libraries/StateUtilsLibraries").then(m => ({ default: m.StateUtilsLibraries })));
+const CarouselLibraries = lazy(() => import("./libraries/CarouselLibraries").then(m => ({ default: m.CarouselLibraries })));
+const DragDropLibraries = lazy(() => import("./libraries/DragDropLibraries").then(m => ({ default: m.DragDropLibraries })));
+const EmojiLibraries = lazy(() => import("./libraries/EmojiLibraries").then(m => ({ default: m.EmojiLibraries })));
+const ThreeDLibraries = lazy(() => import("./libraries/ThreeDLibraries").then(m => ({ default: m.ThreeDLibraries })));
+
+// Loading component for Suspense fallback
+function LoadingFallback() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="text-center">
+        <div className="text-gray-600">Loading...</div>
+      </div>
+    </div>
+  );
+}
 
 export function App() {
   return (
@@ -87,19 +99,55 @@ export function App() {
         <Route path="/sdk-tests/alert-badge" element={<AlertBadgeTest />} />
         <Route path="/sdk-tests/skeleton" element={<SkeletonTest />} />
 
-        {/* Library Test Routes */}
+        {/* Library Test Routes - Lazy Loaded */}
         <Route
           path="/libraries/animation-ui"
-          element={<AnimationUILibraries />}
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <AnimationUILibraries />
+            </Suspense>
+          }
         />
         <Route
           path="/libraries/state-utils"
-          element={<StateUtilsLibraries />}
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <StateUtilsLibraries />
+            </Suspense>
+          }
         />
-        <Route path="/libraries/carousel" element={<CarouselLibraries />} />
-        <Route path="/libraries/drag-drop" element={<DragDropLibraries />} />
-        <Route path="/libraries/emoji" element={<EmojiLibraries />} />
-        <Route path="/libraries/3d" element={<ThreeDLibraries />} />
+        <Route
+          path="/libraries/carousel"
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <CarouselLibraries />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/libraries/drag-drop"
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <DragDropLibraries />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/libraries/emoji"
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <EmojiLibraries />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/libraries/3d"
+          element={
+            <Suspense fallback={<LoadingFallback />}>
+              <ThreeDLibraries />
+            </Suspense>
+          }
+        />
         <Route path="/libraries/*" element={<LibrariesPage />} />
       </Routes>
     </MinisRouter>

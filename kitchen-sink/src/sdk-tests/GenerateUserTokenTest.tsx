@@ -67,13 +67,6 @@ export function GenerateUserTokenTest() {
     }
   };
 
-  const copyToClipboard = () => {
-    if (token) {
-      navigator.clipboard.writeText(token);
-      alert("Token copied to clipboard!");
-    }
-  };
-
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       {/* Header */}
@@ -198,14 +191,6 @@ export function GenerateUserTokenTest() {
                   {token.substring(token.length - 20)}
                 </p>
               </div>
-
-              <Button
-                onClick={copyToClipboard}
-                variant="secondary"
-                className="w-full"
-              >
-                📋 Copy Token
-              </Button>
 
               {expiresAt && (
                 <div className="text-sm text-gray-600">

@@ -1012,14 +1012,6 @@ function StateUtilsContent() {
                           <code className="text-xs font-mono flex-1 break-all">
                             {id}
                           </code>
-                          <Touchable
-                            onClick={() => {
-                              navigator.clipboard.writeText(id);
-                            }}
-                            className="shrink-0"
-                          >
-                            <LucideIcons.Copy className="w-4 h-4 text-gray-600" />
-                          </Touchable>
                         </div>
                       ))}
                     </div>
