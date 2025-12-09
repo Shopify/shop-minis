@@ -65,6 +65,11 @@ export function SDKTestsPage() {
       category: "Media",
     },
     {
+      name: "Microphone Access",
+      path: "/sdk-tests/microphone-access",
+      category: "Media",
+    },
+    {
       name: "Image Component",
       path: "/sdk-tests/image-component",
       category: "Media",

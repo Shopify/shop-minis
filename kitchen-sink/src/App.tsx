@@ -21,6 +21,7 @@ import {
   CameraAccessTest,
   AlertBadgeTest,
   SkeletonTest,
+  MicrophoneTest
 } from "./sdk-tests";
 import {
   AnimationUILibraries,
@@ -82,6 +83,7 @@ export function App() {
         />
         <Route path="/sdk-tests/video-player" element={<VideoPlayerTest />} />
         <Route path="/sdk-tests/camera-access" element={<CameraAccessTest />} />
+        <Route path="/sdk-tests/microphone-access" element={<MicrophoneTest />} />
         <Route path="/sdk-tests/alert-badge" element={<AlertBadgeTest />} />
         <Route path="/sdk-tests/skeleton" element={<SkeletonTest />} />
 

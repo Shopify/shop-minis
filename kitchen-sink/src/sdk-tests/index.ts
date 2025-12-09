@@ -15,5 +15,6 @@ export { ListComponentTest } from "./ListComponentTest";
 export { ImageComponentTest } from "./ImageComponentTest";
 export { VideoPlayerTest } from "./VideoPlayerTest";
 export { CameraAccessTest } from "./CameraAccessTest";
+export { MicrophoneTest } from "./MicrophoneTest"
 export { AlertBadgeTest } from "./AlertBadgeTest";
 export { SkeletonTest } from "./SkeletonTest";
