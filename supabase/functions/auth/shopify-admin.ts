@@ -8,7 +8,6 @@ const USER_TOKEN_VERIFY_MUTATION = `
     userTokenVerify(token: $token) {
       tokenExpiresAt
       publicId
-      userIdentifier
       userState
       userErrors {
         code
@@ -22,7 +21,6 @@ const USER_TOKEN_VERIFY_MUTATION = `
 export interface TokenVerificationResult {
   isValid: boolean;
   publicId?: string;
-  userIdentifier?: string;
   userState?: string;
   error?: string;
 }
@@ -84,12 +82,11 @@ export async function verifyShopMiniToken(
     }
     
     // Token is valid
-    const { publicId, userIdentifier, userState } = userTokenVerify;
+    const { publicId, userState } = userTokenVerify;
     
     return {
       isValid: true,
       publicId,
-      userIdentifier,
       userState
     };
     
