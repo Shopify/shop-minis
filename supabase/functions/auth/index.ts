@@ -46,14 +46,13 @@ Deno.serve(async (req: Request): Promise<Response> => {
       return errorResponse(verification.error || "Invalid Shop Mini token", 401);
     }
     
-    // Create JWT token with 7-day expiration using publicId
-    if (!verification.publicId) {
-      return errorResponse("Public ID not available for this user", 400);
+    // Create JWT token with 7-day expiration
+    if (!verification.userState) {
+      return errorResponse("User state not available", 400);
     }
     
     const jwtToken = await createJWT(
-      verification.publicId,
-      verification.userState!,
+      verification.userState,
       JWT_SECRET_KEY!,
       7
     );
