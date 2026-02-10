@@ -255,7 +255,6 @@ export function GenerateUserTokenTest() {
               <pre className="text-xs bg-gray-900 text-gray-100 p-2 rounded mt-2 overflow-x-auto">
                 {`// Verify with Shopify's public key
 const payload = jwt.verify(token, publicKey)
-const userId = payload.sub
 const scopes = payload.scope`}
               </pre>
             </div>

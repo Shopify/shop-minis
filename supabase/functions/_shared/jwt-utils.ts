@@ -4,7 +4,6 @@
  */
 
 interface JWTPayload {
-  publicId: string;  // Using publicId as the primary identifier
   userState: string;
   exp: number;
   iat: number;
@@ -64,7 +63,6 @@ async function importSecretKey(secret: string): Promise<CryptoKey> {
  * Create a signed JWT token
  */
 export async function createJWT(
-  publicId: string,
   userState: string,
   secretKey: string,
   expirationDays: number = 7
@@ -78,7 +76,6 @@ export async function createJWT(
   };
   
   const payload: JWTPayload = {
-    publicId,
     userState,
     iat: now,
     exp: now + expirationSeconds

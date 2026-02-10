@@ -48,7 +48,7 @@ functions/
      │                       │   Verify Token             │
      │                       ├───────────────────────────►│
      │                       │                            │
-     │                       │   User Info (publicId)     │
+     │                       │   User Info (userState)    │
      │                       │◄───────────────────────────┤
      │                       │                            │
      │   JWT Token           │                            │
@@ -330,9 +330,9 @@ validateEnvVars(vars)          // Check environment variables
 
 ### JWT Utilities (`_shared/jwt-utils.ts`)
 ```typescript
-createJWT(publicId, userState, secret, days)  // Create JWT
-verifyJWT(token, secret)                      // Verify & decode JWT
-extractBearerToken(authHeader)                // Extract token from header
+createJWT(userState, secret, days)  // Create JWT
+verifyJWT(token, secret)            // Verify & decode JWT
+extractBearerToken(authHeader)      // Extract token from header
 ```
 
 ## Security Best Practices
@@ -388,7 +388,6 @@ supabase functions logs remove-background --follow
 Modify the expiration in `auth/index.ts`:
 ```typescript
 const jwtToken = await createJWT(
-  verification.publicId,
   verification.userState,
   JWT_SECRET_KEY!,
   30  // 30 days instead of 7
@@ -399,7 +398,6 @@ const jwtToken = await createJWT(
 Extend the JWT payload in `_shared/jwt-utils.ts`:
 ```typescript
 interface JWTPayload {
-  publicId: string
   userState: string
   customData?: any  // Add your fields
   exp: number
