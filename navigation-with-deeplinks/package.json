@@ -10,7 +10,7 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@shopify/shop-minis-cli": "0.0.209",
+    "@shopify/shop-minis-cli": "0.0.210",
     "@tailwindcss/vite": "^4.1.8",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
