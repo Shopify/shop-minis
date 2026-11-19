@@ -1,0 +1,15 @@
+# deepsec security review of this repository: devx deepsec run (see devx deepsec help).
+# Context for the model: .security/deepsec/<project>.md.
+projects:
+  shop-minis:
+    # The backend example and the workflows carry the top risks. Nothing is ignored: the lockfiles,
+    # icons and demo video produce no hits.
+    priority: [supabase/, .github/]
+  # Optional settings per project:
+  #   root: components/x            review a subdirectory (relative to the zone)
+  #   tech: [rails]                 force Rails detection (engines without a Gemfile)
+  #   matchers: [rails-full]        shared matcher sets (rails-ingress, rails-full) or .json specs
+  #   ignore: ["**/test/**"]        globs left out of the review
+  #   priority: [app/controllers/]  reviewed first
+  #   prompt: extra instructions appended to the system prompt
+  #   title: Report title         heading of the published report
